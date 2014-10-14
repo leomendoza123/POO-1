@@ -1,5 +1,4 @@
 package Logica.TiposGuerrero;
-import Logica.Mapa.ElementoDibujable;
 import Logica.Mapa.Mapa;
 import java.awt.Color;
 import java.awt.Point;

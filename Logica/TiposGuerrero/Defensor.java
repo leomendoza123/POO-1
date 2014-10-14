@@ -7,6 +7,7 @@ package Logica.TiposGuerrero;
 
 import Logica.Mapa.ElementoDibujable;
 import Logica.Mapa.Mapa;
+import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,6 +25,7 @@ public class Defensor extends AtaqueMedianoAlcance{
         this.DefensaAerea = DefensaAerea;
         this.DefensaTerreste = DefensaTerreste;
         this.URLaparienciaMuerto = "/Imagenes/destruido.png"; 
+        colorDeGolpe = Color.BLACK; 
         
         
     }

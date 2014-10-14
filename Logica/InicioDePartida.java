@@ -28,8 +28,7 @@ public class InicioDePartida {
          int x, y;
         Random rdm = new Random(); 
         
-        for (int i = 0; i < 30; i++) {
-            
+        for (int i = 0; i < 10; i++) {
             AtaqueContacto creatura = new AtaqueContacto(1, null, "Leo", "/Imagenes/dragon.gif" ,1, 1, 1, 1, 1, 1, mapa,null); 
             mapa.AgregaElementoAtacante(creatura);
             x = rdm.nextInt(Mapa.cuadriculaDeLado);
@@ -37,8 +36,9 @@ public class InicioDePartida {
             creatura.posicion = new Point(x, y); 
             creatura.getDibujante().posiciona(creatura.getPosicion());
             creatura.getDibujante().pintar(creatura.getURLapariencia());
+        }
         
-    }
+        
     }
     
     

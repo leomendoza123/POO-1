@@ -22,11 +22,6 @@ import javax.swing.JLabel;
  */
 public class Pantalla extends javax.swing.JFrame {
 
-
-    
-    public ElementoDibujable matriz[][];
-    
-    public ArrayList<ElementoJugable> ejercito = new ArrayList();
     
     /**
      * Creates new form Pantalla

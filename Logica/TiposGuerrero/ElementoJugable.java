@@ -5,8 +5,10 @@
  */
 
 package Logica.TiposGuerrero;
+import Logica.Mapa.DibujanteCreaturas;
 import Logica.Mapa.ElementoDibujable;
 import Logica.Mapa.Mapa;
+import  java.awt.Color;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
@@ -26,6 +28,7 @@ public abstract class ElementoJugable extends Thread  {
     public Point posicion = new Point(0,0);
     static final float velocidadDeJuego = 1; 
     String URLaparienciaMuerto = "/Imagenes/muerto.png"; 
+    Color colorDeGolpe = Color.RED; 
     
     // refJuego
     boolean detener = false;
@@ -69,6 +72,7 @@ public abstract class ElementoJugable extends Thread  {
         ElementoJugable Objetivo = EnemigoAtacable();
         if (Objetivo!=null && vivo){
             Objetivo.vida--;
+            ((DibujanteCreaturas)dibujante).AnimacionGolpe(posicion, Objetivo.posicion, colorDeGolpe); 
             if (Objetivo.vida<=0){
                 Objetivo.muerto();
             }
