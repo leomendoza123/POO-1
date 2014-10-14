@@ -10,7 +10,7 @@ import java.util.Random;
  * @author dmora
  */
 
-public class AtaqueMedianoAlcance extends ElementoJugable{
+public class AtaqueMedianoAlcance extends ElementoJugable implements Cloneable{
     
     int velocidad;
     int Alcance; 
@@ -29,6 +29,19 @@ public class AtaqueMedianoAlcance extends ElementoJugable{
         
     }
     
+    public Object clone()
+{
+    Object clone = null;
+    try
+    {
+        clone = super.clone();
+    } 
+    catch(Exception e)
+    {
+        // No deberia suceder
+    }
+    return clone;
+}
 
     
     

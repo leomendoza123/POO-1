@@ -7,13 +7,15 @@
 package Capa_Datos;
 
 import Capa_Grafica.MainPrograma;
+import static Capa_Grafica.MainPrograma.administradorPrincipalPrograma;
 import static Capa_Grafica.MainPrograma.memoriaDePrograma;
 import static Capa_Grafica.MainPrograma.personajesJugables;
-import static Capa_Grafica.MainPrograma.administradorPrincipalPrograma;
 import Logica.*;
+import Logica.Mapa.Mapa;
+import Logica.OrganizacionPrograma.Administrador;
 import Logica.OrganizacionPrograma.Credencial;
 import Logica.OrganizacionPrograma.MemoriaDePrograma;
-import Logica.OrganizacionPrograma.Administrador;
+import Logica.TiposGuerrero.AtaqueAereo;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -77,26 +79,41 @@ public class ManejadorDeArchivos {
             System.out.println("No hay ficheros en el directorio especificado");
         }
         else { 
-              int tipoDeGuerrero;
-              String nombre;
-              int nivelDePoder;
-              int nivelDeAparicion;
-              double costo;
-              int campoEnElEjercito;
-              double cantidadDeGolpesPorUnidadDeTiempo;
-              double vida;
+             //int Alcance, String Nombre, String URLapariencia, int Nivel, int Campos, int NivelAparicion, int Costo, int GolpesPorSegundo, int vida, Mapa refMapa, String URLaparienciaAtaque
+              //int tipoDeGuerrero;
+              //String nombre;
+              //int nivelDePoder;
+              //int nivelDeAparicion;
+              //double costo;
+              //int campoEnElEjercito;
+              //double cantidadDeGolpesPorUnidadDeTiempo;
+              //double vida;
+            int tipoDeGuerrero;
+            int Alcance;
+            String Nombre;
+            String URLapariencia;
+            int Nivel;
+            int Campos;
+            int NivelAparicion;
+            int Costo;
+            int GolpesPorSegundo;
+            int vida;
+            Mapa refMapa;
+            String URLaparienciaAtaque;
               
                for (int x=0;x<ficheros.length;x++){
-                    datos = obtenerContenidoArchivoGRO(ficheros[x]);
+                   System.out.println(pathCarpetaCreaturasPrograma+"/"+ficheros[x]);
+                    datos = obtenerContenidoArchivoGRO(pathCarpetaCreaturasPrograma+"/"+ficheros[x]);
                     if(datos != null){
-                    tipoDeGuerrero = Integer.parseInt(datos[0]);
-                    nombre = datos[1];
-                    nivelDePoder =Integer.parseInt(datos[2]);
-                    nivelDeAparicion = Integer.parseInt(datos[3]);
-                    costo = Double.parseDouble(datos[4]);
-                    campoEnElEjercito = Integer.parseInt(datos[5]);
-                    cantidadDeGolpesPorUnidadDeTiempo = Double.parseDouble(datos[6]);
-                    vida = Double.parseDouble(datos[7]); 
+                  System.out.print("Entre a ver archivos creatura");
+                //    nombre = datos[1];
+                //    nivelDePoder =Integer.parseInt(datos[2]);
+                //    nivelDeAparicion = Integer.parseInt(datos[3]);
+                //    costo = Double.parseDouble(datos[4]);
+                //    campoEnElEjercito = Integer.parseInt(datos[5]);
+                //    cantidadDeGolpesPorUnidadDeTiempo = Double.parseDouble(datos[6]);
+                //    vida = Double.parseDouble(datos[7]); 
+                        tipoDeGuerrero = Integer.parseInt(datos[0]);
                   switch(tipoDeGuerrero){
                     case 0: //Guerrero de contacto
                     {
@@ -113,6 +130,19 @@ public class ManejadorDeArchivos {
                     }
                     case 2: //Guerrero Aereo
                     {
+                   
+                   Alcance = Integer.parseInt(datos[1]);
+                   Nombre = datos[2];
+                   URLapariencia = datos[3];
+                   Nivel = Integer.parseInt(datos[4]);
+                   Campos = Integer.parseInt(datos[5]);
+                   NivelAparicion = Integer.parseInt(datos[6]);
+                   Costo = Integer.parseInt(datos[7]);
+                   GolpesPorSegundo = Integer.parseInt(datos[8]);
+                   vida = Integer.parseInt(datos[9]);
+                   refMapa = new Mapa();
+                   URLaparienciaAtaque = datos[11];
+                       personajesJugables.add(new AtaqueAereo(Alcance,Nombre,URLapariencia,Nivel,Campos,NivelAparicion,Costo,GolpesPorSegundo,vida,refMapa,URLaparienciaAtaque));
                          //GuerreroAereo guerreroAereo = new GuerreroAereo(nombre,nivelDePoder,nivelDeAparicion,costo,campoEnElEjercito,cantidadDeGolpesPorUnidadDeTiempo,vida);
                          //personajesJugables.add(guerreroAereo);
                          break;
@@ -180,7 +210,7 @@ public class ManejadorDeArchivos {
         while ((linea = lector.readLine()) != null) {            
              //resultado += linea+"\n"; 
             
-	StringTokenizer tokens=new StringTokenizer(linea, "/");
+	StringTokenizer tokens=new StringTokenizer(linea, "*");
         int nDatos=tokens.countTokens();
         String[] datos=new String[nDatos];
         int i=0;

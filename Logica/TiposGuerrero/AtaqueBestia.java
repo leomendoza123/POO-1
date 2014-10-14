@@ -9,7 +9,7 @@ import java.util.Random;
  * @author dmora
  */
 
-public class AtaqueBestia extends AtaqueMedianoAlcance{
+public class AtaqueBestia extends AtaqueMedianoAlcance implements Cloneable{
     
     boolean flag = false;
     public AtaqueBestia(int velocidad, int Alcance, String Nombre, String URLapariencia, int Nivel, int Campos, int NivelAparicion, int Costo, int GolpesPorSegundo, int vida, Mapa refMapa, String URLaparienciaAtaque) {
@@ -17,6 +17,19 @@ public class AtaqueBestia extends AtaqueMedianoAlcance{
     }
     
     
+    public Object clone()
+{
+    Object clone = null;
+    try
+    {
+        clone = super.clone();
+    } 
+    catch(Exception e)
+    {
+        // No deberia suceder
+    }
+    return clone;
+}
     
 }
 

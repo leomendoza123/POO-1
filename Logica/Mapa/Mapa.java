@@ -25,6 +25,11 @@ public final class Mapa {
     private ArrayList<ElementoJugable> ElementosGuerreroDefensor; 
     private ArrayList<ElementoDibujable> ElementosAmbiente;
 
+    //Constructor falso para MAPA solo para construir los bichos cuando son cargados desde archivos
+    //luego cuando ya se van a usar se les pasa el verdadero Mapa que ocuparan
+    public Mapa(){
+    }
+    
     public Mapa(JLayeredPane jPanel1) {
         this.jPanel1 = jPanel1;
         ElementosAmbiente = new ArrayList<>(); 

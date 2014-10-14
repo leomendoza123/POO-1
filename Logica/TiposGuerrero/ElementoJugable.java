@@ -17,7 +17,7 @@ import java.util.Random;
  *
  * @author dmora
  */
-public abstract class ElementoJugable extends Thread  {
+public abstract class ElementoJugable extends Thread implements Cloneable  {
     
     // atributos
     private String Nombre,URLapariencia, URLaparienciaAtaque;
@@ -33,6 +33,20 @@ public abstract class ElementoJugable extends Thread  {
     // refJuego
     boolean detener = false;
 
+      public Object clone()
+{
+    Object clone = null;
+    try
+    {
+        clone = super.clone();
+    } 
+    catch(Exception e)
+    {
+        // No deberia suceder
+    }
+    return clone;
+}
+      
     public ElementoJugable(String Nombre, String URLapariencia, int Nivel, int Campos, int NivelAparicion, int Costo, int GolpesPorSegundo, int vida, Mapa refMapa, String URLaparienciaAtaque) {
         
         this.Nombre = Nombre;

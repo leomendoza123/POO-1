@@ -10,7 +10,7 @@ import java.util.Random;
  * @author dmora
  */
 
-public class AtaqueContacto extends ElementoJugable{
+public class AtaqueContacto extends ElementoJugable implements Cloneable{
     
     int velocidad;
     String URLruido; 
@@ -26,6 +26,19 @@ public class AtaqueContacto extends ElementoJugable{
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
+    public Object clone()
+{
+    Object clone = null;
+    try
+    {
+        clone = super.clone();
+    } 
+    catch(Exception e)
+    {
+        // No deberia suceder
+    }
+    return clone;
+}
     
 }
 
