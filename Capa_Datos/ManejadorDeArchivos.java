@@ -112,6 +112,7 @@ public class ManejadorDeArchivos {
                    GolpesPorSegundo = Integer.parseInt(datos[7]);
                    vida = Integer.parseInt(datos[8]);
                    refMapa = new Mapa();
+                   URLaparienciaAtaque = datos[9];
                 //    nombre = datos[1];
                 //    nivelDePoder =Integer.parseInt(datos[2]);
                 //    nivelDeAparicion = Integer.parseInt(datos[3]);
