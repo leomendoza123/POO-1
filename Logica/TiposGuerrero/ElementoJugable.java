@@ -86,13 +86,19 @@ public abstract class ElementoJugable extends Thread implements Cloneable  {
         ElementoJugable Objetivo = EnemigoAtacable();
         if (Objetivo!=null && vivo){
             Objetivo.vida--;
-            ((DibujanteCreaturas)dibujante).AnimacionGolpe(posicion, Objetivo.posicion, colorDeGolpe); 
+            LlamaAnimacionDeAtaque (Objetivo);
             if (Objetivo.vida<=0){
                 Objetivo.muerto();
             }
         }
-                
     }
+    
+    public void LlamaAnimacionDeAtaque(ElementoJugable Objetivo){
+            ((DibujanteCreaturas)dibujante).AnimacionGolpe(posicion, Objetivo.posicion, colorDeGolpe); 
+    }
+    
+    
+    
       
     public ElementoJugable EnemigoAtacable(){
         ElementoJugable Objetivo = EnemigoMasCercanoVivo(); 

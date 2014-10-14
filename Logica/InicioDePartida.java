@@ -29,7 +29,7 @@ public class InicioDePartida {
         Random rdm = new Random(); 
         
         for (int i = 0; i < 10; i++) {
-            AtaqueContacto creatura = new AtaqueContacto(1, null, "Leo", "/Imagenes/dragon.gif" ,1, 1, 1, 1, 1, 1, mapa,null); 
+            AtaqueContacto creatura = new AtaqueContacto(1, "/Sonidos/espada.wav", "Leo", "/Imagenes/dragon.gif" ,1, 1, 1, 1, 1, 1, mapa,null); 
             mapa.AgregaElementoAtacante(creatura);
             x = rdm.nextInt(Mapa.cuadriculaDeLado);
             y = rdm.nextInt(Mapa.cuadriculaDeLado);

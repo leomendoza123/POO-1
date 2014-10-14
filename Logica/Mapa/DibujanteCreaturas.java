@@ -80,6 +80,9 @@ public class DibujanteCreaturas implements ElementoDibujable {
     public void AnimacionGolpe (Point Salida, Point Llegada, Color colorDeGolpe){ 
         new Golpe(refContenedor, Salida, Llegada, colorDeGolpe).start(); 
     }
+    public void AnimacionGolpe (Point Salida, Point Llegada, Color colorDeGolpe, String URLruido){ 
+        new Golpe(refContenedor, Salida, Llegada, colorDeGolpe, URLruido).start(); 
+    }
 
 
 }

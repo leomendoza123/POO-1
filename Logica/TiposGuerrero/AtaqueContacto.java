@@ -1,4 +1,5 @@
 package Logica.TiposGuerrero;
+import Logica.Mapa.DibujanteCreaturas;
 import Logica.Mapa.ElementoDibujable;
 import Logica.Mapa.Mapa;
 import java.awt.Color;
@@ -37,8 +38,17 @@ public class AtaqueContacto extends ElementoJugable implements Cloneable{
     {
         // No deberia suceder
     }
+    
+    
+    
     return clone;
 }
-    
+
+    @Override
+    public void LlamaAnimacionDeAtaque(ElementoJugable Objetivo) {
+          ((DibujanteCreaturas)dibujante).AnimacionGolpe(posicion, Objetivo.posicion, colorDeGolpe,URLruido); 
+
+    }
+
 }
 

@@ -5,12 +5,19 @@
  */
 package Logica.Animacion;
 
+import Logica.Main;
 import static Logica.Mapa.ElementoDibujable.TamañoCuadricula;
 import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Point;
+import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.sound.sampled.AudioInputStream;
+import javax.sound.sampled.AudioSystem;
+import javax.sound.sampled.Clip;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
@@ -19,6 +26,7 @@ import javax.swing.JPanel;
  * @author Leonardo
  */
 public class Golpe extends Thread {
+    private String URLsonido;
     
     JLayeredPane Panel; 
     Point Salida;  Point Llegada;  Color color; 
@@ -38,9 +46,33 @@ public class Golpe extends Thread {
         };
        return panel; 
     }
+    
+    
+    public synchronized void playSound() {
+    new Thread(
+            new Runnable() {
+
+          public void run() {
+              try {
+                  Clip clip = AudioSystem.getClip();
+                  AudioInputStream inputStream = AudioSystem.getAudioInputStream(
+                          Main.class.getResourceAsStream(URLsonido));
+                  clip.open(inputStream);
+                  clip.start();
+              } catch (LineUnavailableException | UnsupportedAudioFileException | IOException e) {
+                  System.err.println(e.getMessage());
+              } }
+      })
+            .start();
+}
+    
+    
 
     @Override
     public void run() {
+        
+        if (URLsonido!=null )
+            playSound(); 
         JPanel Dibujo = DibujoDelGolpe(Salida, Llegada, color); 
       
         try {
@@ -64,12 +96,12 @@ public class Golpe extends Thread {
         this.color = color;
     }
     
-    
-
-    
-    
-    
-               
-    
-    
+    public Golpe(JLayeredPane Panel, Point Salida, Point Llegada, Color color, String URLsonido) {
+        this.Panel = Panel;
+        this.Salida = Salida;
+        this.Llegada = Llegada;
+        this.color = color;
+        this.URLsonido = URLsonido; 
+    }
+      
 }
