@@ -21,6 +21,7 @@ public interface ElementoDibujable {
     public void pintar(String URL);
     public void animar();
     public void posiciona(Point posicion);
+    public void disminuirPosicionZ(); 
     public JLabel getRefLabel();
     
 }

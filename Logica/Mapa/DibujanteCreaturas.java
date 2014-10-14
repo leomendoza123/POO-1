@@ -44,7 +44,7 @@ public class DibujanteCreaturas implements ElementoDibujable {
     @Override
     public void pintar(String URL) {
         refLabel.setSize(TamañoCuadricula, TamañoCuadricula);
-        refContenedor.add(refLabel,1);
+        refContenedor.add(refLabel,5);
         ImageIcon iconLogo = new ImageIcon(this.getClass().getResource(URL));
         refLabel.setIcon(iconLogo);
         refLabel.update(refLabel.getGraphics());
@@ -63,6 +63,14 @@ public class DibujanteCreaturas implements ElementoDibujable {
     public void posiciona(Point posicion) {
         refLabel.setLocation((int)posicion.getX()*TamañoCuadricula, (int)posicion.getY()*TamañoCuadricula);
       
+    }
+    @Override
+    public void disminuirPosicionZ(){
+        //TODO no funciona
+        refContenedor.setComponentZOrder(refLabel, 3);
+        refContenedor.update(refContenedor.getGraphics());
+        refContenedor.repaint(); 
+        
     }
 
 }

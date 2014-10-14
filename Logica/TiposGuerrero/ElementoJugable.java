@@ -20,17 +20,18 @@ public abstract class ElementoJugable extends Thread  {
     // atributos
     private String Nombre,URLapariencia, URLaparienciaAtaque;
     private int Nivel,  Campos,  NivelAparicion,  Costo, GolpesPorSegundo, vida;
-    private boolean vivo;
+    boolean vivo;
     Mapa refMapa;
-    private ElementoDibujable dibujante;
-    public Point posicion = new Point(0,0); 
-    
-    static float velocidadDeJuego = 1; 
+    ElementoDibujable dibujante;
+    public Point posicion = new Point(0,0);
+    static final float velocidadDeJuego = 1; 
+    String URLaparienciaMuerto = "/Imagenes/muerto.png"; 
     
     // refJuego
     boolean detener = false;
 
     public ElementoJugable(String Nombre, String URLapariencia, int Nivel, int Campos, int NivelAparicion, int Costo, int GolpesPorSegundo, int vida, Mapa refMapa, String URLaparienciaAtaque) {
+        
         this.Nombre = Nombre;
         this.URLapariencia = URLapariencia;
         this.Nivel = Nivel;
@@ -67,8 +68,10 @@ public abstract class ElementoJugable extends Thread  {
     public final void atacar(){
         ElementoJugable Objetivo = EnemigoAtacable();
         if (Objetivo!=null && vivo){
-            Objetivo.dibujante.getRefLabel().setVisible(false);
-            Objetivo.vivo = false; 
+            Objetivo.vida--;
+            if (Objetivo.vida<=0){
+                Objetivo.muerto();
+            }
         }
                 
     }
@@ -100,6 +103,7 @@ public abstract class ElementoJugable extends Thread  {
            getDibujante().posiciona(posicion); 
         }
     }
+    
     public final ElementoJugable EnemigoMasCercanoVivo(){
         ArrayList<ElementoJugable> EnemigosEnMapa = EnemigosObjetivoVivos(); 
         ElementoJugable EnemigoMasCercano = null;
@@ -239,8 +243,12 @@ public abstract class ElementoJugable extends Thread  {
         return vivo;
     }
 
-    public void setVivo(boolean vivo) {
-        this.vivo = vivo;
+    public void muerto() {
+        
+        this.vivo = false;
+        this.dibujante.pintar(URLaparienciaMuerto);
+        this.dibujante.disminuirPosicionZ();
+        
     }
 
     

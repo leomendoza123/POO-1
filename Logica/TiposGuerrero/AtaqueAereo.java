@@ -23,7 +23,6 @@ public class AtaqueAereo extends ElementoJugable{
     
     @Override
     public void pegar() {
- 
         
     }
    

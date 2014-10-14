@@ -23,6 +23,8 @@ public class Defensor extends AtaqueMedianoAlcance{
         super(velocidad, Alcance, Nombre, URLapariencia, Nivel, Campos, NivelAparicion, Costo, GolpesPorSegundo, vida, refMapa, URLaparienciaAtaque);
         this.DefensaAerea = DefensaAerea;
         this.DefensaTerreste = DefensaTerreste;
+        this.URLaparienciaMuerto = "/Imagenes/destruido.png"; 
+        
         
     }
 
@@ -40,7 +42,7 @@ public class Defensor extends AtaqueMedianoAlcance{
     public ArrayList<ElementoJugable> EnemigosObjetivo (){
          return refMapa.getElementosGuerreroAtacante();  
     }
-    
+   
     
     
     

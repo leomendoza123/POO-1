@@ -6,15 +6,10 @@
 
 package Logica.Mapa;
 
-import Logica.Mapa.ElementoDibujable;
-import java.awt.Color;
 import java.awt.Point;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
-import javax.swing.JPanel;
-import javax.swing.border.Border;
-import javax.swing.text.Position;
 
 /**
  *
@@ -32,7 +27,7 @@ public class DibujanteCampo implements ElementoDibujable{
     {
         refContenedor = panel;
         refLabel = new JLabel();
-        refContenedor.add(refLabel,0);
+        refContenedor.add(refLabel,1);
         // agregar evento al dar clic
         refLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             
@@ -68,5 +63,11 @@ public class DibujanteCampo implements ElementoDibujable{
     public JLabel getRefLabel() {
         return refLabel;
     }
+
+    @Override
+    public void disminuirPosicionZ() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
     
 }
