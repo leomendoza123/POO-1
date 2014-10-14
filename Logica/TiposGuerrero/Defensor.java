@@ -32,8 +32,16 @@ public class Defensor extends AtaqueMedianoAlcance{
         super.getDibujante().posiciona(posicion);
         YaPosicionado = true;
        }
-       
     }
+       
+    
+       
+    @Override
+    public ArrayList<ElementoJugable> EnemigosObjetivo (){
+         return refMapa.getElementosGuerreroAtacante();  
+    }
+    
+    
     
     
 }

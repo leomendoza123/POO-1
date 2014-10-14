@@ -26,11 +26,7 @@ public class AtaqueAereo extends ElementoJugable{
  
         
     }
-    
-    @Override
-    public void atacar() {
-        
-    }
+   
 
     
     @Override

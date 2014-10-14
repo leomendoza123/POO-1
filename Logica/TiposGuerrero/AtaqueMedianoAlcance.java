@@ -29,10 +29,6 @@ public class AtaqueMedianoAlcance extends ElementoJugable{
         
     }
     
-    @Override
-    public void atacar() {
-        
-    }
 
     
     

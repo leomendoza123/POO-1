@@ -30,12 +30,13 @@ public class InicioDePartida {
         
         for (int i = 0; i < 10; i++) {
             
-            AtaqueContacto GT = new AtaqueContacto(1, null, "Leo", "/Imagenes/dragon.gif" ,1, 1, 1, 1, 1, 1, mapa,null); 
-            mapa.AgregaElementoAtacante(GT);
+            AtaqueContacto creatura = new AtaqueContacto(1, null, "Leo", "/Imagenes/dragon.gif" ,1, 1, 1, 1, 1, 1, mapa,null); 
+            mapa.AgregaElementoAtacante(creatura);
             x = rdm.nextInt(Mapa.cuadriculaDeLado);
             y = rdm.nextInt(Mapa.cuadriculaDeLado);
-            GT.posicion = new Point(x, y); 
-            GT.getDibujante().pintar(GT.getURLapariencia());
+            creatura.posicion = new Point(x, y); 
+            creatura.getDibujante().posiciona(creatura.getPosicion());
+            creatura.getDibujante().pintar(creatura.getURLapariencia());
         
     }
     }
@@ -48,12 +49,13 @@ public class InicioDePartida {
         for (int i = 0; i < 10; i++) {
          
           
-            Defensor GD = new Defensor(true, true, 1, 1, "Test", "/Imagenes/DefensaMuro.gif", 1, 1, 1, 1, 1, 1, mapa,null);
-            mapa.AgregaElementoDefensor(GD); 
+            Defensor creatura = new Defensor(true, true, 1, 1, "Test", "/Imagenes/DefensaMuro.gif", 1, 1, 1, 1, 1, 1, mapa,null);
+            mapa.AgregaElementoDefensor(creatura); 
             x = rdm.nextInt(Mapa.cuadriculaDeLado);
             y = rdm.nextInt(Mapa.cuadriculaDeLado);
-            GD.posicion = new Point (x,y); 
-            GD.getDibujante().pintar(GD.getURLapariencia()); 
+            creatura.posicion = new Point (x,y); 
+            creatura.getDibujante().posiciona(creatura.getPosicion());
+            creatura.getDibujante().pintar(creatura.getURLapariencia()); 
         
         }
         }

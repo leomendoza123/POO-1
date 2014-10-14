@@ -20,7 +20,8 @@ public abstract class ElementoJugable extends Thread  {
     // atributos
     private String Nombre,URLapariencia, URLaparienciaAtaque;
     private int Nivel,  Campos,  NivelAparicion,  Costo, GolpesPorSegundo, vida;
-    private Mapa refMapa;
+    private boolean vivo;
+    Mapa refMapa;
     private ElementoDibujable dibujante;
     public Point posicion = new Point(0,0); 
     
@@ -44,7 +45,8 @@ public abstract class ElementoJugable extends Thread  {
     
     @Override
     public final void run(){
-                while (!detener)
+        vivo = true; 
+                while (!detener && vivo)
         {
             try {
                 // se mueve "velocidad" segundos
@@ -52,9 +54,9 @@ public abstract class ElementoJugable extends Thread  {
                 int miliSegundosPorGole = (int)(miliSegundosRestantes / GolpesPorSegundo);
                                 
                  for (; miliSegundosRestantes>0; miliSegundosRestantes-=miliSegundosPorGole ){
+                     atacar();
                      sleep(miliSegundosPorGole);
                  }
-
                 mover();
                 
             } catch (InterruptedException ex) {}
@@ -62,12 +64,29 @@ public abstract class ElementoJugable extends Thread  {
     }
     
     
-    public abstract void atacar();
+    public final void atacar(){
+        ElementoJugable Objetivo = EnemigoAtacable();
+        if (Objetivo!=null && vivo){
+            Objetivo.dibujante.getRefLabel().setVisible(false);
+            Objetivo.vivo = false; 
+        }
+                
+    }
+      
+    public ElementoJugable EnemigoAtacable(){
+        ElementoJugable Objetivo = EnemigoMasCercanoVivo(); 
+        if (
+                Objetivo != null 
+                &&
+                Objetivo.posicion.distance(posicion)<=1.51 )
+            return Objetivo ;
+        return   null; 
+    }
     
     public void mover(){
-        ElementoJugable Objetivo = EnemigoMasCercano(); ;
+        ElementoJugable Objetivo = EnemigoMasCercanoVivo(); ;
 
-        if (Objetivo!=null ){
+        if (Objetivo!=null && vivo){
             if (posicion.x > Objetivo.posicion.x+1)
                 posicion.x--;
             else if (posicion.x < Objetivo.posicion.x-1)
@@ -81,8 +100,8 @@ public abstract class ElementoJugable extends Thread  {
            getDibujante().posiciona(posicion); 
         }
     }
-    public ElementoJugable EnemigoMasCercano(){
-        ArrayList<ElementoJugable> EnemigosEnMapa = EnemigosObjetivo(); 
+    public final ElementoJugable EnemigoMasCercanoVivo(){
+        ArrayList<ElementoJugable> EnemigosEnMapa = EnemigosObjetivoVivos(); 
         ElementoJugable EnemigoMasCercano = null;
         double DistanciaDeEnemigoMasCercano = 100; 
         double TempDistanciaConEnemigo;
@@ -96,6 +115,19 @@ public abstract class ElementoJugable extends Thread  {
         }
         return EnemigoMasCercano; 
     }
+    
+    public final ArrayList<ElementoJugable> EnemigosObjetivoVivos (){
+        ArrayList<ElementoJugable> EnemigosObjetivo = EnemigosObjetivo();
+        ArrayList<ElementoJugable> EnemigosObjetivoVivos = new ArrayList<>(); 
+        for (ElementoJugable Enemigo : EnemigosObjetivo) {
+            if (Enemigo.vivo){
+                EnemigosObjetivoVivos.add(Enemigo);
+            }
+        }
+        return EnemigosObjetivoVivos; 
+   
+    }
+    
     public ArrayList<ElementoJugable> EnemigosObjetivo (){
         return refMapa.getElementosGuerreroDefensor(); 
     }
@@ -203,6 +235,15 @@ public abstract class ElementoJugable extends Thread  {
         this.detener = detener;
     }
 
+    public boolean isVivo() {
+        return vivo;
+    }
+
+    public void setVivo(boolean vivo) {
+        this.vivo = vivo;
+    }
+
+    
 
     
     

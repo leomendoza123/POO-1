@@ -22,15 +22,6 @@ public class AtaqueContacto extends ElementoJugable{
         this.URLruido = URLruido;
     }
     
-    
-
-
-    @Override
-    public void atacar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
     public void pegar() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
