@@ -102,9 +102,10 @@ public class ManejadorDeArchivos {
             String URLaparienciaAtaque;
               
                for (int x=0;x<ficheros.length;x++){
-                    datos = obtenerContenidoArchivoGRO(ficheros[x]);
+                   System.out.println(pathCarpetaCreaturasPrograma+"/"+ficheros[x]);
+                    datos = obtenerContenidoArchivoGRO(pathCarpetaCreaturasPrograma+"/"+ficheros[x]);
                     if(datos != null){
-                  
+                  System.out.print("Entre a ver archivos creatura");
                 //    nombre = datos[1];
                 //    nivelDePoder =Integer.parseInt(datos[2]);
                 //    nivelDeAparicion = Integer.parseInt(datos[3]);
