@@ -7,13 +7,14 @@
 package Capa_Datos;
 
 import Capa_Grafica.MainPrograma;
+import static Capa_Grafica.MainPrograma.administradorPrincipalPrograma;
 import static Capa_Grafica.MainPrograma.memoriaDePrograma;
 import static Capa_Grafica.MainPrograma.personajesJugables;
-import static Capa_Grafica.MainPrograma.administradorPrincipalPrograma;
 import Logica.*;
+import Logica.Mapa.Mapa;
+import Logica.OrganizacionPrograma.Administrador;
 import Logica.OrganizacionPrograma.Credencial;
 import Logica.OrganizacionPrograma.MemoriaDePrograma;
-import Logica.OrganizacionPrograma.Administrador;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -77,26 +78,47 @@ public class ManejadorDeArchivos {
             System.out.println("No hay ficheros en el directorio especificado");
         }
         else { 
-              int tipoDeGuerrero;
-              String nombre;
-              int nivelDePoder;
-              int nivelDeAparicion;
-              double costo;
-              int campoEnElEjercito;
-              double cantidadDeGolpesPorUnidadDeTiempo;
-              double vida;
+             //int Alcance, String Nombre, String URLapariencia, int Nivel, int Campos, int NivelAparicion, int Costo, int GolpesPorSegundo, int vida, Mapa refMapa, String URLaparienciaAtaque
+              //int tipoDeGuerrero;
+              //String nombre;
+              //int nivelDePoder;
+              //int nivelDeAparicion;
+              //double costo;
+              //int campoEnElEjercito;
+              //double cantidadDeGolpesPorUnidadDeTiempo;
+              //double vida;
+            int tipoDeGuerrero;
+            String Nombre;
+            String URLapariencia;
+            int Nivel;
+            int Campos;
+            int NivelAparicion;
+            int Costo;
+            int GolpesPorSegundo;
+            int vida;
+            Mapa refMapa;
+            String URLaparienciaAtaque;
               
                for (int x=0;x<ficheros.length;x++){
                     datos = obtenerContenidoArchivoGRO(ficheros[x]);
                     if(datos != null){
-                    tipoDeGuerrero = Integer.parseInt(datos[0]);
-                    nombre = datos[1];
-                    nivelDePoder =Integer.parseInt(datos[2]);
-                    nivelDeAparicion = Integer.parseInt(datos[3]);
-                    costo = Double.parseDouble(datos[4]);
-                    campoEnElEjercito = Integer.parseInt(datos[5]);
-                    cantidadDeGolpesPorUnidadDeTiempo = Double.parseDouble(datos[6]);
-                    vida = Double.parseDouble(datos[7]); 
+                   tipoDeGuerrero = Integer.parseInt(datos[0]);
+                   Nombre = datos[1];
+                   URLapariencia = datos[2];
+                   Nivel = Integer.parseInt(datos[3]);
+                   Campos = Integer.parseInt(datos[4]);
+                   NivelAparicion = Integer.parseInt(datos[5]);
+                   Costo = Integer.parseInt(datos[6]);
+                   GolpesPorSegundo = Integer.parseInt(datos[7]);
+                   vida = Integer.parseInt(datos[8]);
+                   refMapa = new Mapa();
+                //    nombre = datos[1];
+                //    nivelDePoder =Integer.parseInt(datos[2]);
+                //    nivelDeAparicion = Integer.parseInt(datos[3]);
+                //    costo = Double.parseDouble(datos[4]);
+                //    campoEnElEjercito = Integer.parseInt(datos[5]);
+                //    cantidadDeGolpesPorUnidadDeTiempo = Double.parseDouble(datos[6]);
+                //    vida = Double.parseDouble(datos[7]); 
                   switch(tipoDeGuerrero){
                     case 0: //Guerrero de contacto
                     {
@@ -150,7 +172,7 @@ public class ManejadorDeArchivos {
         BufferedReader lector = new BufferedReader(archivo);
         
         while ((linea = lector.readLine()) != null) {            
-	StringTokenizer tokens=new StringTokenizer(linea, "/");
+	StringTokenizer tokens=new StringTokenizer(linea, "*");
         int nDatos=tokens.countTokens();
         String[] datos=new String[nDatos];
         int i=0;

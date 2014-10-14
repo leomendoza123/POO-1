@@ -5,7 +5,7 @@
  */
 
 package Capa_Grafica;
-
+import static Capa_Grafica.MainPrograma.partidaPrincipalPrograma;
 /**
  *
  * @author Jose
@@ -37,6 +37,11 @@ public class PantallaIngresoJuego extends javax.swing.JFrame {
         jLabel1.setText("Pantalla Usuario");
 
         jButton1.setText("Nueva Partida");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Cargar Partida");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -85,6 +90,17 @@ public class PantallaIngresoJuego extends javax.swing.JFrame {
         });
         this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        //partidaPrincipalPrograma = New Partida(1000,1);
+         java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PantallaPrePartida().setVisible(true);
+            }
+        });
+         this.dispose();
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
