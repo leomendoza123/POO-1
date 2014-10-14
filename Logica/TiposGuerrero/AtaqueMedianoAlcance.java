@@ -16,8 +16,8 @@ public class AtaqueMedianoAlcance extends ElementoJugable{
     int Alcance; 
     boolean flag = false;
 
-    public AtaqueMedianoAlcance(int velocidad, int Alcance, String Nombre, String URLapariencia, int Nivel, int Campos, int NivelAparicion, int Costo, int GolpesPorSegundo, int vida, Mapa refMapa) {
-        super(Nombre, URLapariencia, Nivel, Campos, NivelAparicion, Costo, GolpesPorSegundo, vida, refMapa);
+    public AtaqueMedianoAlcance(int velocidad, int Alcance, String Nombre, String URLapariencia, int Nivel, int Campos, int NivelAparicion, int Costo, int GolpesPorSegundo, int vida, Mapa refMapa, String URLaparienciaAtaque) {
+        super(Nombre, URLapariencia, Nivel, Campos, NivelAparicion, Costo, GolpesPorSegundo, vida, refMapa, URLaparienciaAtaque);
         this.velocidad = velocidad;
         this.Alcance = Alcance;
     }

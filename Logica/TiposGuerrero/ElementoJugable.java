@@ -16,7 +16,7 @@ import java.awt.Point;
 public abstract class ElementoJugable extends Thread  {
     
     // atributos
-    private String Nombre,URLapariencia;
+    private String Nombre,URLapariencia, URLaparienciaAtaque;
     private int Nivel,  Campos,  NivelAparicion,  Costo, GolpesPorSegundo, vida;
     private Mapa refMapa;
     private ElementoDibujable dibujante;
@@ -25,7 +25,7 @@ public abstract class ElementoJugable extends Thread  {
     // refJuego
     boolean detener = false;
 
-    public ElementoJugable(String Nombre, String URLapariencia, int Nivel, int Campos, int NivelAparicion, int Costo, int GolpesPorSegundo, int vida, Mapa refMapa) {
+    public ElementoJugable(String Nombre, String URLapariencia, int Nivel, int Campos, int NivelAparicion, int Costo, int GolpesPorSegundo, int vida, Mapa refMapa, String URLaparienciaAtaque) {
         this.Nombre = Nombre;
         this.URLapariencia = URLapariencia;
         this.Nivel = Nivel;
@@ -35,6 +35,7 @@ public abstract class ElementoJugable extends Thread  {
         this.GolpesPorSegundo = GolpesPorSegundo;
         this.vida = vida;
         this.refMapa = refMapa;
+        this.URLaparienciaAtaque = URLaparienciaAtaque; 
     }
     
     @Override
