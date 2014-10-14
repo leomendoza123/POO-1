@@ -15,6 +15,7 @@ import Logica.Mapa.Mapa;
 import Logica.OrganizacionPrograma.Administrador;
 import Logica.OrganizacionPrograma.Credencial;
 import Logica.OrganizacionPrograma.MemoriaDePrograma;
+import Logica.OrganizacionPrograma.Partida;
 import Logica.TiposGuerrero.AtaqueAereo;
 import java.io.BufferedReader;
 import java.io.File;
@@ -38,6 +39,7 @@ public class ManejadorDeArchivos {
      public static String pathArchivoMemoriaPrograma = "programfiles/MemoriaPrograma.txt";
      public static String pathCarpetaCreaturasPrograma = "programfiles/creaturas";
      public static String pathArchivoADMAdministrador ="programfiles/ArchivoAdministrador.adm";
+     public static String pathArchivosPartidas = "programfiles/Partidas/";
      
      public static void inicializarMemoriaPrograma(){
      try {
@@ -64,7 +66,7 @@ public class ManejadorDeArchivos {
      Credencial credencial = new Credencial(nombreUsuarioAdmin,passwordUsuarioAdmin);
      administradorPrincipalPrograma = new Administrador(credencial);
      }
-     
+    
      
      public static void inicializarCreaturasPrograma(){
        File dir = new File(pathCarpetaCreaturasPrograma);
@@ -256,7 +258,10 @@ public class ManejadorDeArchivos {
              */
     }
      
-     
+      public static boolean guardarPartida(String fileName,Partida partida){
+      return grabarObjeto(pathArchivosPartidas+fileName,partida);
+      }
+      
       public static boolean grabarObjeto (String file, Object obj)
     {
         ObjectOutputStream salida;

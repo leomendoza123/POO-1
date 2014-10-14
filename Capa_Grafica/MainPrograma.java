@@ -22,6 +22,7 @@ public class MainPrograma {
     public static Administrador administradorPrincipalPrograma;
     public static Jugador jugadorPrincipalPrograma;
     public static Partida partidaPrincipalPrograma;
+    public static int indexGuardado;
     
     public static void main(String args[]){
         

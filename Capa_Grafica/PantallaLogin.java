@@ -8,6 +8,7 @@ package Capa_Grafica;
 
 import static Capa_Grafica.MainPrograma.memoriaDePrograma;
 import static Capa_Grafica.MainPrograma.jugadorPrincipalPrograma;
+import static Capa_Grafica.MainPrograma.indexGuardado;
 import Logica.OrganizacionPrograma.*;
 
 /**
@@ -142,6 +143,7 @@ public class PantallaLogin extends javax.swing.JFrame {
         coincidenciaNombre = true;
              if(jugador.getCredencial().getPasswordUsuario().equals(passwordUsuario)){
                 coincidenciaPassword = true;
+                             indexGuardado = i;
                             jugadorPrincipalPrograma = jugador;
                         }
         }
