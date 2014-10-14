@@ -10,7 +10,7 @@ import Logica.Mapa.Mapa;
 import Logica.Mapa.ElementoDibujable;
 import Logica.TiposGuerrero.GuerreroAereo;
 import Logica.TiposGuerrero.GuerreroTerrestre;
-import Logica.TiposGuerrero.Guerrero;
+import Logica.TiposGuerrero.ElementoJugable;
 import java.awt.Point;
 import java.util.ArrayList;
 import java.util.Random;
@@ -26,7 +26,7 @@ public class Pantalla extends javax.swing.JFrame {
     
     public ElementoDibujable matriz[][];
     
-    public ArrayList<Guerrero> ejercito = new ArrayList();
+    public ArrayList<ElementoJugable> ejercito = new ArrayList();
     
     /**
      * Creates new form Pantalla
@@ -36,13 +36,31 @@ public class Pantalla extends javax.swing.JFrame {
         initComponents();
          
         this.setSize(1000,1000);
+        
+        
+        
+        ///// LE EXPLICO MAE OJO:  para iniciar una partida
+        
+        // CREA UN JPANEL
         jPanelDeMapa.setSize(800, 800);
+        // CREA UN MAPA, que resive el JPANEL
+        Mapa MapaObj = new Mapa(jPanelDeMapa);
         
-        Mapa MapaObj = new Mapa(jPanelDeMapa); 
+        //Y aqui empieza la partida: 
+        InicioDePartida Partida = new InicioDePartida(); 
+        //Asigna el  Mapa a la partida
+        Partida.setMapa(MapaObj);
+        //Le mete creturas al mapa
+        Partida.IniciarCreaturasAtaque();
+        //Le mete la creaturas de defensa; 
+        Partida.IniciarCreaturasDefensa();
+        //Corre los hilos de las creaturas
+        Partida.RunCreaturas();
         
-        InicioDePartida.getInstance().setMapa(MapaObj);
-        InicioDePartida.getInstance().IniciarPartida();
-        InicioDePartida.getInstance().RunCreaturas();
+        
+        
+        //Hay que agregarle una funcion como InicioDePartida.getInstance().setParametrosDePartida(level, creaturas, blbablabalbal);
+        // Que sería lo que usted me manda para iniciar partida
         
        
 

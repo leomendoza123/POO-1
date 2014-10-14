@@ -6,13 +6,16 @@
 package Logica;
 
 import Logica.Mapa.Mapa;
+import Logica.TiposGuerrero.Defensor;
+import Logica.TiposGuerrero.GuerreroTerrestre;
+import java.awt.Point;
+import java.util.Random;
 
 /**
  *
  * @author leoanardo
  */
 public class InicioDePartida {
-    private static InicioDePartida iniciarPartida = new InicioDePartida();
     private Mapa mapa;
     
 
@@ -21,19 +24,28 @@ public class InicioDePartida {
         mapa = pMapa;
     }
     
-    void IniciarPartida (){
-        
+    public void IniciarCreaturasAtaque (){
         for (int i = 0; i < 10; i++) {
-                
-            mapa.AgregaCreatura();
+            GuerreroTerrestre GT = new GuerreroTerrestre(i, i, i, mapa, "/Imagenes/DefensaWall.gif");
+            mapa.AgregaElementoAtacante(GT);
+            GT.getDibujante().posiciona(new Point(15, 15));
+            GT.getDibujante().pintar(GT.URLapariencia);
         }
-         
     }
     
-    public static InicioDePartida getInstance(){
-        return iniciarPartida;
+    
+    public void IniciarCreaturasDefensa() {
+        int x, y;
+        Random rdm = new Random(); 
+        for (int i = 0; i < 10; i++) {
+            Defensor GD = new Defensor(1, 1, mapa, "/Imagenes/DefensaWall.gif");
+            mapa.AgregaElementoDefensor(GD); 
+            x = rdm.nextInt(Mapa.cuadriculaDeLado);
+            y = rdm.nextInt(Mapa.cuadriculaDeLado);
+            GD.getDibujante().posiciona(new Point (x,y));
+            GD.getDibujante().pintar(GD.URLapariencia); 
+        }
     }
-
     void RunCreaturas() {
         mapa.RunCreaturas();
     }

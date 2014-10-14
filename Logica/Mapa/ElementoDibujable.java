@@ -17,8 +17,8 @@ import javax.swing.JPanel;
  */
 public interface ElementoDibujable {
     
-    public static final int TAMANO = 32;
-    public void pintar();
+    public static final int TamañoCuadricula = 32;
+    public void pintar(String URL);
     public void animar();
     public void posiciona(Point posicion);
     public JLabel getRefLabel();

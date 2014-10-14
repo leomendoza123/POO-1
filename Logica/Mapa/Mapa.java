@@ -5,7 +5,8 @@
  */
 package Logica.Mapa;
 
-import Logica.TiposGuerrero.Guerrero;
+import Logica.TiposGuerrero.Defensor;
+import Logica.TiposGuerrero.ElementoJugable;
 import Logica.TiposGuerrero.GuerreroTerrestre;
 import java.awt.Point;
 import java.util.ArrayList;
@@ -17,44 +18,56 @@ import javax.swing.JPanel;
  */
 public final class Mapa {
 
-    public static final int TAMANO = 30;
+    public static final int cuadriculaDeLado = 28;
     JPanel jPanel1;
-    private ArrayList<Guerrero> ElementosGuerrero; 
+    private ArrayList<ElementoJugable> ElementosGuerreroAtacante; 
+    private ArrayList<ElementoJugable> ElementosGuerreroDefensor; 
     private ArrayList<ElementoDibujable> ElementosAmbiente;
 
     public Mapa(JPanel jPanel1) {
         this.jPanel1 = jPanel1;
         ElementosAmbiente = new ArrayList<>(); 
-        ElementosGuerrero = new ArrayList<>(); 
+        ElementosGuerreroAtacante = new ArrayList<>(); 
+        ElementosGuerreroDefensor = new ArrayList<>();
         generarMapaBase();
     }
 
     public void generarMapaBase() {
-        for (int fila = 0; fila < TAMANO; fila++) {
-            for (int columna = 0; columna < TAMANO; columna++) {
+        for (int fila = 0; fila < cuadriculaDeLado; fila++) {
+            for (int columna = 0; columna < cuadriculaDeLado; columna++) {
                 DibujanteCampo ElementoCampo = new DibujanteCampo(jPanel1); 
                 ElementosAmbiente.add(ElementoCampo);
                 ElementoCampo.posiciona(new Point(fila,columna));
+                ElementoCampo.pintar("/Imagenes/Grass.gif");
             }
         }
     }
-    GuerreroTerrestre GA;
-    public void AgregaCreatura ()
-    {
-       ///TODO aqui se agrega las creaturas, pero tienen que ser resividas como parametros
-        int x = 0; 
-        
+    
+    public void AgregaElementoAtacante (GuerreroTerrestre GA)
+    { 
         ElementoDibujable dibujante = new DibujanteCreaturas(jPanel1);
-        GA = new GuerreroTerrestre(x, x, x, null, jPanel1, this, dibujante);
-        ElementosGuerrero.add(GA); 
+        GA.setDibujante(dibujante); 
+        ElementosGuerreroAtacante.add(GA); 
+        
         
      }
+    public void AgregaElementoDefensor (Defensor GD)
+    {
+        ElementoDibujable dibujante = new DibujanteCreaturas(jPanel1);
+        GD.setDibujante(dibujante); 
+        ElementosGuerreroDefensor.add(GD); 
+        
+    }
     
     public void RunCreaturas(){
         
-        for (Guerrero Guerrero : ElementosGuerrero) {
-            Guerrero.start();
+        for (ElementoJugable Ataque : ElementosGuerreroAtacante) {
+            Ataque.start();
+        }
+        for (ElementoJugable Defensa : ElementosGuerreroDefensor) {
+            Defensa.start();
         }
     }
+
 
 }

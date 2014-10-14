@@ -21,12 +21,12 @@ import javax.swing.JPanel;
  *
  * @author dmora
  */
-public class GuerreroAereo extends Guerrero{
+public class GuerreroAereo extends ElementoJugable{
 
    boolean flag;
     
     public GuerreroAereo(int fuerza, int resistencia, JLabel refLabel, JPanel refContenedor, Mapa refMapa, ElementoDibujable dibujante) {
-        super(fuerza, resistencia, refLabel, refContenedor, refMapa,dibujante);
+        super(fuerza, resistencia, refMapa, null);
         dibujante.posiciona(posicion);
         flag = false;
     }
@@ -54,12 +54,7 @@ public class GuerreroAereo extends Guerrero{
     @Override
     public void pegar() {
         
-        int x = new Random().nextInt(800);
-        int y = new Random().nextInt(800);        
-        refContenedor.add(refLabel);
-        refLabel.setSize(30,30);
-        refLabel.setLocation(x,y);
-        refLabel.setBackground(Color.black);
+
         
     }
 
@@ -67,21 +62,14 @@ public class GuerreroAereo extends Guerrero{
     
     @Override
     public void atacar() {
-        if (flag)
-            refLabel.setBackground(Color.black);
-        else
-            refLabel.setBackground(Color.pink);
 
-
-
-        flag = !flag;
         
     }
 
     @Override
     public void mover() {
         posicion.x ++;
-        dibujante.posiciona(posicion);
+        getDibujante().posiciona(posicion);
         
     }
     

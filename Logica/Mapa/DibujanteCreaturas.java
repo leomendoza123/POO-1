@@ -6,7 +6,7 @@
 package Logica.Mapa;
 
 import Logica.Mapa.ElementoDibujable;
-import Logica.TiposGuerrero.Guerrero;
+import Logica.TiposGuerrero.ElementoJugable;
 import java.awt.Color;
 import java.awt.Point;
 import javax.swing.ImageIcon;
@@ -23,35 +23,27 @@ import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 public class DibujanteCreaturas implements ElementoDibujable {
 
     // remove final con new acá
-    //public static final int TAMANO = 15;
+    //public static final int TamañoCuadricula = 15;
     public boolean ocupado = false;
     public JLabel refLabel;
     public JPanel refContenedor;
-    public Guerrero TipoGuerrero;
 
     public DibujanteCreaturas(JPanel panel) {
-        this.TipoGuerrero = TipoGuerrero;
         refContenedor = panel;
         refLabel = new JLabel("-");
         refLabel.setOpaque(true);
-       
-
         // agregar evento al dar clic
         refLabel.addMouseListener(new java.awt.event.MouseAdapter() {
 
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 animar();
             }
-        });
-        
-        
-        
-        
+        });   
     }
 
     @Override
-    public void pintar() {
-        ImageIcon iconLogo = new ImageIcon(this.getClass().getResource("/Imagenes/dragon.gif"));
+    public void pintar(String URL) {
+        ImageIcon iconLogo = new ImageIcon(this.getClass().getResource(URL));
         refLabel.setIcon(iconLogo);
         refLabel.update(refLabel.getGraphics());
     }
@@ -68,9 +60,8 @@ public class DibujanteCreaturas implements ElementoDibujable {
     @Override
     public void posiciona(Point posicion) {
         refContenedor.add(refLabel);
-        refLabel.setLocation((int) posicion.getX() * TAMANO, (int) posicion.getY() * TAMANO);
-        refLabel.setSize(TAMANO, TAMANO);
-        pintar();
+        refLabel.setLocation((int) posicion.getX() * TamañoCuadricula, (int) posicion.getY() * TamañoCuadricula);
+        refLabel.setSize(TamañoCuadricula, TamañoCuadricula);
         refLabel.repaint();
     }
 

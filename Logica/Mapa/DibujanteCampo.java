@@ -22,14 +22,11 @@ import javax.swing.text.Position;
 public class DibujanteCampo implements ElementoDibujable{
      
     // remove final con new acá
-    //public static final int TAMANO = 15;
+    //public static final int TamañoCuadricula = 15;
 
     public JLabel refLabel;
     public JPanel refContenedor;
-    
-    
-    
-    
+
     public DibujanteCampo (JPanel panel)
     {
         refContenedor = panel;
@@ -41,17 +38,15 @@ public class DibujanteCampo implements ElementoDibujable{
             
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 animar();
-            }
-           
-            
+            }            
         });
     }
     
     @Override
-    public void pintar() {
-        //ImageIcon iconLogo = new ImageIcon(this.getClass().getResource("/Imagenes/Grass_(Tile).gif"));
-        //refLabel.setIcon(iconLogo);
-        refLabel.update(refLabel.getGraphics());        
+    public void pintar(String URL) {
+        ImageIcon iconLogo = new ImageIcon(this.getClass().getResource(URL));
+        refLabel.setIcon(iconLogo);
+        refLabel.update(refLabel.getGraphics());
     }
 
     @Override
@@ -61,16 +56,10 @@ public class DibujanteCampo implements ElementoDibujable{
 
     @Override
     public void posiciona(Point posicion) {
-      
         // se coloca el label en el panel
         refContenedor.add(refLabel);
-   
-        refLabel.setLocation((int)posicion.getX()*TAMANO, (int)posicion.getY()*TAMANO);
-        refLabel.setSize(TAMANO, TAMANO);
-        
-        
-        pintar();
-        
+        refLabel.setLocation((int)posicion.getX()*TamañoCuadricula, (int)posicion.getY()*TamañoCuadricula);
+        refLabel.setSize(TamañoCuadricula, TamañoCuadricula);
     }
     
     
