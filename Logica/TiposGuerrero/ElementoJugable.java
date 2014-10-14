@@ -9,6 +9,7 @@ import Logica.Mapa.ElementoDibujable;
 import Logica.Mapa.Mapa;
 import java.awt.Point;
 import java.util.ArrayList;
+import java.util.Random;
 
 /**
  *
@@ -62,22 +63,38 @@ public abstract class ElementoJugable extends Thread  {
     
     
     public abstract void atacar();
+    
     public void mover(){
+        ElementoJugable Objetivo = EnemigoMasCercano(); ;
 
-      }
-    public void EnemigoMasCercano(){
+        if (Objetivo!=null ){
+            if (posicion.x > Objetivo.posicion.x+1)
+                posicion.x--;
+            else if (posicion.x < Objetivo.posicion.x-1)
+                posicion.x++;
+
+          if (posicion.y > Objetivo.posicion.y+1)
+                posicion.y--;
+            else if (posicion.y < Objetivo.posicion.y-1)
+                posicion.y++;
+          
+           getDibujante().posiciona(posicion); 
+        }
+    }
+    public ElementoJugable EnemigoMasCercano(){
         ArrayList<ElementoJugable> EnemigosEnMapa = EnemigosObjetivo(); 
         ElementoJugable EnemigoMasCercano = null;
-        double DistanciaDeEnemigoMasCercano = 0; 
+        double DistanciaDeEnemigoMasCercano = 100; 
         double TempDistanciaConEnemigo;
         
         for (ElementoJugable Enemigo : EnemigosEnMapa) {
             TempDistanciaConEnemigo = this.posicion.distance(Enemigo.posicion);
-            if (TempDistanciaConEnemigo < DistanciaDeEnemigoMasCercano){
+            if (TempDistanciaConEnemigo < DistanciaDeEnemigoMasCercano ){
                 DistanciaDeEnemigoMasCercano = TempDistanciaConEnemigo; 
                 EnemigoMasCercano = Enemigo; 
             }
         }
+        return EnemigoMasCercano; 
     }
     public ArrayList<ElementoJugable> EnemigosObjetivo (){
         return refMapa.getElementosGuerreroDefensor(); 

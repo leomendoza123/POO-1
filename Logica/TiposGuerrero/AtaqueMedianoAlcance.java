@@ -35,26 +35,6 @@ public class AtaqueMedianoAlcance extends ElementoJugable{
     }
 
     
-    @Override
-    public void mover() {
-        
-        
-     
-       int lado = new Random().nextInt(4);
-        
-        if (lado == 0)
-            posicion.x++;
-        else if (lado == 1)
-            posicion.x--;
-        else if (lado == 2)
-            posicion.y++;
-        else 
-            posicion.y--;
-  
-       getDibujante().posiciona(posicion);
-        
-    }
-    
     
 }
 

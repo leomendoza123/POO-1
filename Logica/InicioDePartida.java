@@ -25,11 +25,16 @@ public class InicioDePartida {
     }
     
     public void IniciarCreaturasAtaque (){
+         int x, y;
+        Random rdm = new Random(); 
+        
         for (int i = 0; i < 10; i++) {
             
             AtaqueContacto GT = new AtaqueContacto(1, null, "Leo", "/Imagenes/dragon.gif" ,1, 1, 1, 1, 1, 1, mapa,null); 
             mapa.AgregaElementoAtacante(GT);
-            GT.posicion = new Point(5, 5); 
+            x = rdm.nextInt(Mapa.cuadriculaDeLado);
+            y = rdm.nextInt(Mapa.cuadriculaDeLado);
+            GT.posicion = new Point(x, y); 
             GT.getDibujante().pintar(GT.getURLapariencia());
         
     }
