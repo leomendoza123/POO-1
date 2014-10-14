@@ -7,6 +7,7 @@ package Logica.TiposGuerrero;
 
 import Logica.Mapa.ElementoDibujable;
 import Logica.Mapa.Mapa;
+import java.util.ArrayList;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
@@ -14,30 +15,12 @@ import javax.swing.JPanel;
  *
  * @author leoanardo
  */
-public class Defensor extends ElementoJugable{
+public class Defensor extends AtaqueMedianoAlcance{
+    boolean DefensaAerea, DefensaTerreste;
 
-    public Defensor(int fuerza, int resistencia,  Mapa refMapa, String UrlApariencia) {
-        super(fuerza, resistencia, refMapa, UrlApariencia);
+    public Defensor(boolean DefensaAerea, boolean DefensaTerreste, int velocidad, int Alcance, String Nombre, String URLapariencia, int Nivel, int Campos, int NivelAparicion, int Costo, int GolpesPorSegundo, int vida, Mapa refMapa) {
+        super(velocidad, Alcance, Nombre, URLapariencia, Nivel, Campos, NivelAparicion, Costo, GolpesPorSegundo, vida, refMapa);
+        this.DefensaAerea = DefensaAerea;
+        this.DefensaTerreste = DefensaTerreste;
     }
-
-    @Override
-    public void run() {
-       // throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void atacar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void mover() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-
-    @Override
-    public void pegar() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
 }

@@ -8,8 +8,8 @@ package Logica;
 
 import Logica.Mapa.Mapa;
 import Logica.Mapa.ElementoDibujable;
-import Logica.TiposGuerrero.GuerreroAereo;
-import Logica.TiposGuerrero.GuerreroTerrestre;
+import Logica.TiposGuerrero.AtaqueAereo;
+import Logica.TiposGuerrero.AtaqueContacto;
 import Logica.TiposGuerrero.ElementoJugable;
 import java.awt.Point;
 import java.util.ArrayList;
@@ -76,7 +76,7 @@ public class Pantalla extends javax.swing.JFrame {
             etiqueta.setOpaque(true);
             //jPanel1.add(etiqueta);
 
-            GuerreroAereo nuevo = new GuerreroAereo(3, 10, etiqueta, this.jPanelDeMapa);
+            AtaqueAereo nuevo = new AtaqueAereo(3, 10, etiqueta, this.jPanelDeMapa);
             ejercito.add(nuevo);
             nuevo.pegar();
             //
@@ -87,7 +87,7 @@ public class Pantalla extends javax.swing.JFrame {
             etiqueta.setOpaque(true);
             //jPanel1.add(etiqueta);
 
-            GuerreroTerrestre nuevo = new GuerreroTerrestre(5, 3, 10, etiqueta, this.jPanelDeMapa);
+            AtaqueContacto nuevo = new AtaqueContacto(5, 3, 10, etiqueta, this.jPanelDeMapa);
             nuevo.pegar();
             
             ejercito.add(nuevo);

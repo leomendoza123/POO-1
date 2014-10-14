@@ -16,23 +16,26 @@ import java.awt.Point;
 public abstract class ElementoJugable extends Thread  {
     
     // atributos
-    int fuerza;
-    int resistencia;
-    public Point posicion = new Point(0,0); 
+    private String Nombre,URLapariencia;
+    private int Nivel,  Campos,  NivelAparicion,  Costo, GolpesPorSegundo, vida;
+    private Mapa refMapa;
     private ElementoDibujable dibujante;
-    Mapa refMapa; 
-    public String URLapariencia;
+    public Point posicion = new Point(0,0); 
     
     // refJuego
     boolean detener = false;
 
-    public ElementoJugable(int fuerza, int resistencia, Mapa refMapa, String URLapariencia) {
-        this.fuerza = fuerza;
-        this.resistencia = resistencia;
+    public ElementoJugable(String Nombre, String URLapariencia, int Nivel, int Campos, int NivelAparicion, int Costo, int GolpesPorSegundo, int vida, Mapa refMapa) {
+        this.Nombre = Nombre;
+        this.URLapariencia = URLapariencia;
+        this.Nivel = Nivel;
+        this.Campos = Campos;
+        this.NivelAparicion = NivelAparicion;
+        this.Costo = Costo;
+        this.GolpesPorSegundo = GolpesPorSegundo;
+        this.vida = vida;
         this.refMapa = refMapa;
-        this.URLapariencia = URLapariencia; 
-    }  
-    
+    }
     
     @Override
     public abstract void run();
@@ -45,19 +48,104 @@ public abstract class ElementoJugable extends Thread  {
         this.detener = true;
     }
 
-    /**
-     * @return the dibujante
-     */
+    public String getNombre() {
+        return Nombre;
+    }
+
+    public void setNombre(String Nombre) {
+        this.Nombre = Nombre;
+    }
+
+    public String getURLapariencia() {
+        return URLapariencia;
+    }
+
+    public void setURLapariencia(String URLapariencia) {
+        this.URLapariencia = URLapariencia;
+    }
+
+    public int getNivel() {
+        return Nivel;
+    }
+
+    public void setNivel(int Nivel) {
+        this.Nivel = Nivel;
+    }
+
+    public int getCampos() {
+        return Campos;
+    }
+
+    public void setCampos(int Campos) {
+        this.Campos = Campos;
+    }
+
+    public int getNivelAparicion() {
+        return NivelAparicion;
+    }
+
+    public void setNivelAparicion(int NivelAparicion) {
+        this.NivelAparicion = NivelAparicion;
+    }
+
+    public int getCosto() {
+        return Costo;
+    }
+
+    public void setCosto(int Costo) {
+        this.Costo = Costo;
+    }
+
+    public int getGolpesPorSegundo() {
+        return GolpesPorSegundo;
+    }
+
+    public void setGolpesPorSegundo(int GolpesPorSegundo) {
+        this.GolpesPorSegundo = GolpesPorSegundo;
+    }
+
+    public int getVida() {
+        return vida;
+    }
+
+    public void setVida(int vida) {
+        this.vida = vida;
+    }
+
+    public Mapa getRefMapa() {
+        return refMapa;
+    }
+
+    public void setRefMapa(Mapa refMapa) {
+        this.refMapa = refMapa;
+    }
+
+    public Point getPosicion() {
+        return posicion;
+    }
+
+    public void setPosicion(Point posicion) {
+        this.posicion = posicion;
+    }
+
     public ElementoDibujable getDibujante() {
         return dibujante;
     }
 
-    /**
-     * @param dibujante the dibujante to set
-     */
     public void setDibujante(ElementoDibujable dibujante) {
         this.dibujante = dibujante;
     }
+
+    public boolean isDetener() {
+        return detener;
+    }
+
+    public void setDetener(boolean detener) {
+        this.detener = detener;
+    }
+
+
+    
     
 }
 

@@ -10,23 +10,28 @@ import java.util.Random;
  * @author dmora
  */
 
-public class GuerreroTerrestre extends ElementoJugable{
+public class AtaqueContacto extends ElementoJugable{
     
-    int espera;
+    int velocidad;
+    String URLruido; 
     boolean flag = false;
-    
-    public GuerreroTerrestre(int espera, int fuerza, int resistencia, Mapa refMapa, String URLapariencia) {
-        super(fuerza, resistencia, refMapa, URLapariencia);
-        this.espera = 1;
+
+    public AtaqueContacto(int velocidad, String URLruido, String Nombre, String URLapariencia, int Nivel, int Campos, int NivelAparicion, int Costo, int GolpesPorSegundo, int vida, Mapa refMapa) {
+        super(Nombre, URLapariencia, Nivel, Campos, NivelAparicion, Costo, GolpesPorSegundo, vida, refMapa);
+        this.velocidad = velocidad;
+        this.URLruido = URLruido;
     }
+    
+    
+    
 
     @Override
     public void run() {
         while (!detener)
         {
             try {
-                // se mueve "espera" segundos
-                int segundos = espera*1000;
+                // se mueve "velocidad" segundos
+                int segundos = velocidad*1000;
                 
                 //para mover la imagen
                 while (segundos > 0)

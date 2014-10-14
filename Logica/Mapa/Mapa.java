@@ -7,7 +7,7 @@ package Logica.Mapa;
 
 import Logica.TiposGuerrero.Defensor;
 import Logica.TiposGuerrero.ElementoJugable;
-import Logica.TiposGuerrero.GuerreroTerrestre;
+import Logica.TiposGuerrero.AtaqueContacto;
 import java.awt.Point;
 import java.util.ArrayList;
 import javax.swing.JPanel;
@@ -43,7 +43,7 @@ public final class Mapa {
         }
     }
     
-    public void AgregaElementoAtacante (GuerreroTerrestre GA)
+    public void AgregaElementoAtacante (AtaqueContacto GA)
     { 
         ElementoDibujable dibujante = new DibujanteCreaturas(jPanel1);
         GA.setDibujante(dibujante); 
