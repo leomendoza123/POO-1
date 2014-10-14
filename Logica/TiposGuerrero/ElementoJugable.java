@@ -8,6 +8,7 @@ package Logica.TiposGuerrero;
 import Logica.Mapa.ElementoDibujable;
 import Logica.Mapa.Mapa;
 import java.awt.Point;
+import java.util.ArrayList;
 
 /**
  *
@@ -21,6 +22,8 @@ public abstract class ElementoJugable extends Thread  {
     private Mapa refMapa;
     private ElementoDibujable dibujante;
     public Point posicion = new Point(0,0); 
+    
+    static float velocidadDeJuego = 1; 
     
     // refJuego
     boolean detener = false;
@@ -39,9 +42,47 @@ public abstract class ElementoJugable extends Thread  {
     }
     
     @Override
-    public abstract void run();
+    public final void run(){
+                while (!detener)
+        {
+            try {
+                // se mueve "velocidad" segundos
+                int miliSegundosRestantes = (int)(1000 * velocidadDeJuego); 
+                int miliSegundosPorGole = (int)(miliSegundosRestantes / GolpesPorSegundo);
+                                
+                 for (; miliSegundosRestantes>0; miliSegundosRestantes-=miliSegundosPorGole ){
+                     sleep(miliSegundosPorGole);
+                 }
+
+                mover();
+                
+            } catch (InterruptedException ex) {}
+        }
+    }
+    
+    
     public abstract void atacar();
-    public abstract void mover();
+    public void mover(){
+
+      }
+    public void EnemigoMasCercano(){
+        ArrayList<ElementoJugable> EnemigosEnMapa = EnemigosObjetivo(); 
+        ElementoJugable EnemigoMasCercano = null;
+        double DistanciaDeEnemigoMasCercano = 0; 
+        double TempDistanciaConEnemigo;
+        
+        for (ElementoJugable Enemigo : EnemigosEnMapa) {
+            TempDistanciaConEnemigo = this.posicion.distance(Enemigo.posicion);
+            if (TempDistanciaConEnemigo < DistanciaDeEnemigoMasCercano){
+                DistanciaDeEnemigoMasCercano = TempDistanciaConEnemigo; 
+                EnemigoMasCercano = Enemigo; 
+            }
+        }
+    }
+    public ArrayList<ElementoJugable> EnemigosObjetivo (){
+        return refMapa.getElementosGuerreroDefensor(); 
+    }
+    
     public abstract void pegar();
     
     public void detener()

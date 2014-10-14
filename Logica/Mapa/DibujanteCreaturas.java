@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Point;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.text.Position;
@@ -26,12 +27,11 @@ public class DibujanteCreaturas implements ElementoDibujable {
     //public static final int TamañoCuadricula = 15;
     public boolean ocupado = false;
     public JLabel refLabel;
-    public JPanel refContenedor;
+    public JLayeredPane refContenedor;
 
-    public DibujanteCreaturas(JPanel panel) {
+    public DibujanteCreaturas(JLayeredPane panel) {
         refContenedor = panel;
-        refLabel = new JLabel("-");
-        refLabel.setOpaque(true);
+        refLabel = new JLabel();
         // agregar evento al dar clic
         refLabel.addMouseListener(new java.awt.event.MouseAdapter() {
 
@@ -59,10 +59,9 @@ public class DibujanteCreaturas implements ElementoDibujable {
 
     @Override
     public void posiciona(Point posicion) {
-        refContenedor.add(refLabel);
-        refLabel.setLocation((int) posicion.getX() * TamañoCuadricula, (int) posicion.getY() * TamañoCuadricula);
+        refContenedor.add(refLabel,1);
+        refLabel.setLocation((int)posicion.getX()*TamañoCuadricula, (int)posicion.getY()*TamañoCuadricula);
         refLabel.setSize(TamañoCuadricula, TamañoCuadricula);
-        refLabel.repaint();
     }
 
 }

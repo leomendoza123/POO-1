@@ -23,40 +23,6 @@ public class AtaqueContacto extends ElementoJugable{
     }
     
     
-    
-
-    @Override
-    public void run() {
-        while (!detener)
-        {
-            try {
-                // se mueve "velocidad" segundos
-                int segundos = velocidad*1000;
-                
-                //para mover la imagen
-                while (segundos > 0)
-                {
-                    mover();
-                    sleep(500);
-                    segundos -= 500;
-                }
-                
-            } catch (InterruptedException ex) {}
-        }
-    }
-
-    @Override
-    public void pegar() {
- 
-        
-    }
-    
-    @Override
-    public void atacar() {
-        
-    }
-
-    
     @Override
     public void mover() {
         
@@ -75,6 +41,16 @@ public class AtaqueContacto extends ElementoJugable{
   
        getDibujante().posiciona(posicion);
         
+    }
+
+    @Override
+    public void atacar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public void pegar() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

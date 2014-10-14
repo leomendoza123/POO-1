@@ -21,28 +21,7 @@ public class AtaqueMedianoAlcance extends ElementoJugable{
         this.velocidad = velocidad;
         this.Alcance = Alcance;
     }
-    
-    
-
-    @Override
-    public void run() {
-        while (!detener)
-        {
-            try {
-                // se mueve "velocidad" segundos
-                int segundos = velocidad*1000;
-                
-                //para mover la imagen
-                while (segundos > 0)
-                {
-                    mover();
-                    sleep(500);
-                    segundos -= 500;
-                }
-                
-            } catch (InterruptedException ex) {}
-        }
-    }
+   
 
     @Override
     public void pegar() {

@@ -20,13 +20,6 @@ public class AtaqueAereo extends ElementoJugable{
         this.Alcance = Alcance;
     }
     
-    
- 
-
-    @Override
-    public void run() {
-    }
-
     @Override
     public void pegar() {
  

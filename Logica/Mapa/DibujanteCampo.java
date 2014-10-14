@@ -11,6 +11,7 @@ import java.awt.Color;
 import java.awt.Point;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 import javax.swing.border.Border;
 import javax.swing.text.Position;
@@ -25,14 +26,13 @@ public class DibujanteCampo implements ElementoDibujable{
     //public static final int TamañoCuadricula = 15;
 
     public JLabel refLabel;
-    public JPanel refContenedor;
+    public JLayeredPane refContenedor;
 
-    public DibujanteCampo (JPanel panel)
+    public DibujanteCampo (JLayeredPane panel)
     {
         refContenedor = panel;
-        refLabel = new JLabel("-");
-        refLabel.setOpaque(true);
-        
+        refLabel = new JLabel();
+        refContenedor.add(refLabel,0);
         // agregar evento al dar clic
         refLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             
@@ -47,6 +47,7 @@ public class DibujanteCampo implements ElementoDibujable{
         ImageIcon iconLogo = new ImageIcon(this.getClass().getResource(URL));
         refLabel.setIcon(iconLogo);
         refLabel.update(refLabel.getGraphics());
+        
     }
 
     @Override
@@ -57,7 +58,7 @@ public class DibujanteCampo implements ElementoDibujable{
     @Override
     public void posiciona(Point posicion) {
         // se coloca el label en el panel
-        refContenedor.add(refLabel);
+         //TODO hacer que se dibuje el suelo
         refLabel.setLocation((int)posicion.getX()*TamañoCuadricula, (int)posicion.getY()*TamañoCuadricula);
         refLabel.setSize(TamañoCuadricula, TamañoCuadricula);
     }

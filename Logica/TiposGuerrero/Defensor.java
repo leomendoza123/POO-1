@@ -17,10 +17,23 @@ import javax.swing.JPanel;
  */
 public class Defensor extends AtaqueMedianoAlcance{
     boolean DefensaAerea, DefensaTerreste;
+    boolean YaPosicionado = false; 
 
     public Defensor(boolean DefensaAerea, boolean DefensaTerreste, int velocidad, int Alcance, String Nombre, String URLapariencia, int Nivel, int Campos, int NivelAparicion, int Costo, int GolpesPorSegundo, int vida, Mapa refMapa, String URLaparienciaAtaque) {
         super(velocidad, Alcance, Nombre, URLapariencia, Nivel, Campos, NivelAparicion, Costo, GolpesPorSegundo, vida, refMapa, URLaparienciaAtaque);
         this.DefensaAerea = DefensaAerea;
         this.DefensaTerreste = DefensaTerreste;
+        
     }
+
+    @Override
+    public void mover() {
+       if (!YaPosicionado) {
+        super.getDibujante().posiciona(posicion);
+        YaPosicionado = true;
+       }
+       
+    }
+    
+    
 }

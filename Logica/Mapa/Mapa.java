@@ -10,6 +10,7 @@ import Logica.TiposGuerrero.ElementoJugable;
 import Logica.TiposGuerrero.AtaqueContacto;
 import java.awt.Point;
 import java.util.ArrayList;
+import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
 /**
@@ -19,12 +20,12 @@ import javax.swing.JPanel;
 public final class Mapa {
 
     public static final int cuadriculaDeLado = 28;
-    JPanel jPanel1;
+    JLayeredPane jPanel1;
     private ArrayList<ElementoJugable> ElementosGuerreroAtacante; 
     private ArrayList<ElementoJugable> ElementosGuerreroDefensor; 
     private ArrayList<ElementoDibujable> ElementosAmbiente;
 
-    public Mapa(JPanel jPanel1) {
+    public Mapa(JLayeredPane jPanel1) {
         this.jPanel1 = jPanel1;
         ElementosAmbiente = new ArrayList<>(); 
         ElementosGuerreroAtacante = new ArrayList<>(); 
@@ -69,5 +70,24 @@ public final class Mapa {
         }
     }
 
+    public ArrayList<ElementoJugable> getElementosGuerreroAtacante() {
+        return ElementosGuerreroAtacante;
+    }
+
+    public void setElementosGuerreroAtacante(ArrayList<ElementoJugable> ElementosGuerreroAtacante) {
+        this.ElementosGuerreroAtacante = ElementosGuerreroAtacante;
+    }
+
+    public ArrayList<ElementoJugable> getElementosGuerreroDefensor() {
+        return ElementosGuerreroDefensor;
+    }
+
+    public void setElementosGuerreroDefensor(ArrayList<ElementoJugable> ElementosGuerreroDefensor) {
+        this.ElementosGuerreroDefensor = ElementosGuerreroDefensor;
+    }
+
+    
+    
+    
 
 }
