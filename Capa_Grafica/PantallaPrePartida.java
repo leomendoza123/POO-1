@@ -6,6 +6,8 @@
 
 package Capa_Grafica;
 import static Capa_Grafica.MainPrograma.partidaPrincipalPrograma;
+import Logica.TiposGuerrero.ElementoJugable;
+import java.util.ArrayList;
 
 /**
  *
@@ -34,7 +36,7 @@ public class PantallaPrePartida extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextArea1 = new javax.swing.JTextArea();
         jLabel2 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        AtacaAldea = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
 
@@ -48,10 +50,10 @@ public class PantallaPrePartida extends javax.swing.JFrame {
 
         jLabel2.setText("Información de la partida");
 
-        jButton1.setText("Lanzar Partida (Atacar Una Aldea)");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        AtacaAldea.setText("Lanzar Partida (Atacar Una Aldea)");
+        AtacaAldea.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                AtacaAldeaActionPerformed(evt);
             }
         });
 
@@ -69,7 +71,7 @@ public class PantallaPrePartida extends javax.swing.JFrame {
                     .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
+                    .addComponent(AtacaAldea, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 332, Short.MAX_VALUE)
                     .addComponent(jButton2, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(58, Short.MAX_VALUE))
@@ -88,20 +90,22 @@ public class PantallaPrePartida extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jButton2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton1)
+                .addComponent(AtacaAldea)
                 .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+    private void AtacaAldeaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AtacaAldeaActionPerformed
+
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PantallaDeJuego(partidaPrincipalPrograma).setVisible(true);
+            }
+        });
         
-        //Lanzar la partida desde aca 
-        //el objeto estatico partidaPrincipalPrograma es de clase Partida y tiene lo necesario referente 
-        //cantidad de oro del jugador, nivel del jugador, ejercito del jugador
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_AtacaAldeaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,7 +143,7 @@ public class PantallaPrePartida extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton AtacaAldea;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
