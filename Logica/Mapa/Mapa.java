@@ -19,7 +19,8 @@ import javax.swing.JPanel;
  */
 public final class Mapa {
 
-    public static final int cuadriculaDeLado = 28;
+    public static final int cuadriculaAlto = 18;
+    public static final int cuadriculaAncho = 40;
     JLayeredPane jPanel1;
     private ArrayList<ElementoJugable> ElementosGuerreroAtacante; 
     private ArrayList<ElementoJugable> ElementosGuerreroDefensor; 
@@ -39,8 +40,8 @@ public final class Mapa {
     }
 
     public void generarMapaBase() {
-        for (int fila = 0; fila < cuadriculaDeLado; fila++) {
-            for (int columna = 0; columna < cuadriculaDeLado; columna++) {
+        for (int fila = 0; fila < cuadriculaAncho; fila++) {
+            for (int columna = 0; columna < cuadriculaAlto; columna++) {
                 DibujanteCampo ElementoCampo = new DibujanteCampo(jPanel1); 
                 ElementosAmbiente.add(ElementoCampo);
                 ElementoCampo.posiciona(new Point(fila,columna));
@@ -49,7 +50,7 @@ public final class Mapa {
         }
     }
     
-    public void AgregaElementoAtacante (AtaqueContacto GA)
+    public void AgregaElementoAtacante (ElementoJugable GA)
     { 
         ElementoDibujable dibujante = new DibujanteCreaturas(jPanel1);
         GA.setDibujante(dibujante); 

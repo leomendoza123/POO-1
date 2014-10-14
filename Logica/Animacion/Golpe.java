@@ -85,7 +85,6 @@ public class Golpe extends Thread {
             Dibujo.setVisible(false);
             
         } catch (InterruptedException ex) {
-            System.err.println("Error al dibujar golpe");
         }
     }
 
