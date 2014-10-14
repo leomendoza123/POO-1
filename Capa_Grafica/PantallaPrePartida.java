@@ -5,6 +5,7 @@
  */
 
 package Capa_Grafica;
+import static Capa_Grafica.MainPrograma.partidaPrincipalPrograma;
 
 /**
  *
@@ -17,6 +18,7 @@ public class PantallaPrePartida extends javax.swing.JFrame {
      */
     public PantallaPrePartida() {
         initComponents();
+       jTextArea1.setText(partidaPrincipalPrograma.toString());
     }
 
     /**

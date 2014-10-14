@@ -50,4 +50,13 @@ public class Partida implements Serializable {
     public ArrayList<ElementoJugable> getGuerreros(){
     return this.ejercito;
     }
+    
+    public String toString(){
+    String resultado;
+    resultado  = "Nivel Del Jugador: ->"+getNivelDelJugador()+"\n";
+    resultado +="Oro Del Jugador: ->"+getOro()+"\n";
+    resultado +="Cantidad De guerreros ->"+getGuerreros().size()+"\n";
+    
+    return resultado;
+    }
 }

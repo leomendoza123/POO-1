@@ -15,6 +15,7 @@ import Logica.Mapa.Mapa;
 import Logica.OrganizacionPrograma.Administrador;
 import Logica.OrganizacionPrograma.Credencial;
 import Logica.OrganizacionPrograma.MemoriaDePrograma;
+import Logica.TiposGuerrero.AtaqueAereo;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -88,6 +89,7 @@ public class ManejadorDeArchivos {
               //double cantidadDeGolpesPorUnidadDeTiempo;
               //double vida;
             int tipoDeGuerrero;
+            int Alcance;
             String Nombre;
             String URLapariencia;
             int Nivel;
@@ -102,17 +104,7 @@ public class ManejadorDeArchivos {
                for (int x=0;x<ficheros.length;x++){
                     datos = obtenerContenidoArchivoGRO(ficheros[x]);
                     if(datos != null){
-                   tipoDeGuerrero = Integer.parseInt(datos[0]);
-                   Nombre = datos[1];
-                   URLapariencia = datos[2];
-                   Nivel = Integer.parseInt(datos[3]);
-                   Campos = Integer.parseInt(datos[4]);
-                   NivelAparicion = Integer.parseInt(datos[5]);
-                   Costo = Integer.parseInt(datos[6]);
-                   GolpesPorSegundo = Integer.parseInt(datos[7]);
-                   vida = Integer.parseInt(datos[8]);
-                   refMapa = new Mapa();
-                   URLaparienciaAtaque = datos[9];
+                  
                 //    nombre = datos[1];
                 //    nivelDePoder =Integer.parseInt(datos[2]);
                 //    nivelDeAparicion = Integer.parseInt(datos[3]);
@@ -120,6 +112,7 @@ public class ManejadorDeArchivos {
                 //    campoEnElEjercito = Integer.parseInt(datos[5]);
                 //    cantidadDeGolpesPorUnidadDeTiempo = Double.parseDouble(datos[6]);
                 //    vida = Double.parseDouble(datos[7]); 
+                        tipoDeGuerrero = Integer.parseInt(datos[0]);
                   switch(tipoDeGuerrero){
                     case 0: //Guerrero de contacto
                     {
@@ -136,6 +129,19 @@ public class ManejadorDeArchivos {
                     }
                     case 2: //Guerrero Aereo
                     {
+                   
+                   Alcance = Integer.parseInt(datos[1]);
+                   Nombre = datos[2];
+                   URLapariencia = datos[3];
+                   Nivel = Integer.parseInt(datos[4]);
+                   Campos = Integer.parseInt(datos[5]);
+                   NivelAparicion = Integer.parseInt(datos[6]);
+                   Costo = Integer.parseInt(datos[7]);
+                   GolpesPorSegundo = Integer.parseInt(datos[8]);
+                   vida = Integer.parseInt(datos[9]);
+                   refMapa = new Mapa();
+                   URLaparienciaAtaque = datos[11];
+                       personajesJugables.add(new AtaqueAereo(Alcance,Nombre,URLapariencia,Nivel,Campos,NivelAparicion,Costo,GolpesPorSegundo,vida,refMapa,URLaparienciaAtaque));
                          //GuerreroAereo guerreroAereo = new GuerreroAereo(nombre,nivelDePoder,nivelDeAparicion,costo,campoEnElEjercito,cantidadDeGolpesPorUnidadDeTiempo,vida);
                          //personajesJugables.add(guerreroAereo);
                          break;
@@ -173,7 +179,7 @@ public class ManejadorDeArchivos {
         BufferedReader lector = new BufferedReader(archivo);
         
         while ((linea = lector.readLine()) != null) {            
-	StringTokenizer tokens=new StringTokenizer(linea, "*");
+	StringTokenizer tokens=new StringTokenizer(linea, "/");
         int nDatos=tokens.countTokens();
         String[] datos=new String[nDatos];
         int i=0;
@@ -203,7 +209,7 @@ public class ManejadorDeArchivos {
         while ((linea = lector.readLine()) != null) {            
              //resultado += linea+"\n"; 
             
-	StringTokenizer tokens=new StringTokenizer(linea, "/");
+	StringTokenizer tokens=new StringTokenizer(linea, "*");
         int nDatos=tokens.countTokens();
         String[] datos=new String[nDatos];
         int i=0;
