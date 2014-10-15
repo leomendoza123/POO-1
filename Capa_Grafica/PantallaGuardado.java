@@ -10,6 +10,7 @@ import static Capa_Grafica.MainPrograma.memoriaDePrograma;
 import static Capa_Grafica.MainPrograma.indexGuardado;
 import static Capa_Grafica.MainPrograma.partidaPrincipalPrograma;
 import static Capa_Grafica.MainPrograma.jugadorPrincipalPrograma;
+
 /**
  *
  * @author Jose
@@ -115,6 +116,8 @@ public class PantallaGuardado extends javax.swing.JFrame {
         if(!(partidaConNombreIgual)){
         ManejadorDeArchivos.guardarPartida(nombrePartida,partidaPrincipalPrograma);
         jugadorPrincipalPrograma.getPartidasDelJugador().add(ManejadorDeArchivos.pathArchivosPartidas+nombrePartida);
+        memoriaDePrograma.jugadores.add(indexGuardado, jugadorPrincipalPrograma);
+        ManejadorDeArchivos.guardarMemoriaDePrograma(memoriaDePrograma);
         }
         
     }//GEN-LAST:event_jButton1ActionPerformed

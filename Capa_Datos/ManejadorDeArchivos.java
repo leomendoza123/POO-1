@@ -262,6 +262,10 @@ public class ManejadorDeArchivos {
       return grabarObjeto(pathArchivosPartidas+fileName,partida);
       }
       
+      public static boolean guardarMemoriaDePrograma(MemoriaDePrograma memoria){
+      return grabarObjeto(pathArchivoMemoriaPrograma,memoria);
+      }
+      
       public static boolean grabarObjeto (String file, Object obj)
     {
         ObjectOutputStream salida;

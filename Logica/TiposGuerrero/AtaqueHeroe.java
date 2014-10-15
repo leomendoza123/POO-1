@@ -18,16 +18,7 @@ public class AtaqueHeroe extends AtaqueContacto implements Cloneable{
     
 public Object clone()
 {
-    Object clone = null;
-    try
-    {
-        clone = super.clone();
-    } 
-    catch(Exception e)
-    {
-        // No deberia suceder
-    }
-    return clone;
+    return new AtaqueHeroe(this.velocidad,this.URLruido,this.Nombre,this.URLapariencia,this.Nivel,this.Campos,this.NivelAparicion,this.Costo,this.GolpesPorSegundo,this.vida,this.refMapa,this.URLaparienciaAtaque);
 }
     
 }

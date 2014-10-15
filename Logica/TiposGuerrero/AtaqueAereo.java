@@ -33,16 +33,10 @@ public class AtaqueAereo extends ElementoJugable implements Cloneable{
     
     public Object clone()
 {
-    Object clone = null;
-    try
-    {
-        clone = super.clone();
-    } 
-    catch(Exception e)
-    {
-        // No deberia suceder
-    }
-    return clone;
+    //Object clone = null;
+    //return new AtaqueAereo(this.);
+    //return clone;
+    return new AtaqueAereo(this.Alcance,this.Nombre,this.URLapariencia,this.Nivel,this.Campos,this.NivelAparicion,this.Costo,this.GolpesPorSegundo,this.vida,this.refMapa,this.URLaparienciaAtaque);
 }
     
 }
