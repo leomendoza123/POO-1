@@ -21,6 +21,7 @@ public class AtaqueMedianoAlcance extends ElementoJugable implements Cloneable{
         this.velocidad = velocidad;
         this.Alcance = Alcance;
     }
+
    
 
     @Override

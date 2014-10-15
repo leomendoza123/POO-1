@@ -77,15 +77,19 @@ public class Golpe extends Thread {
         JPanel Dibujo = DibujoDelGolpe(Salida, Llegada, color); 
       
         try {
-            Dibujo.setSize(1000,1000);
+            Dibujo.setSize(2000,2000);
             Dibujo.setOpaque(false);
             Dibujo.setVisible(true);
             Panel.add(Dibujo,15);
-            sleep(40);
-            Panel.remove(Dibujo);
+            sleep(100);
             Dibujo.setVisible(false);
+            Panel.remove(Dibujo);
+            Panel.repaint();
             
-        } catch (InterruptedException ex) {
+        } catch (Exception ex) {
+            Dibujo.setVisible(false);
+            Panel.remove(Dibujo);
+            
         }
     }
 

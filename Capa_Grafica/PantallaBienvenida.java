@@ -6,6 +6,13 @@
 
 package Capa_Grafica;
 
+import Capa_Datos.ManejadorDeArchivos;
+import static Capa_Grafica.MainPrograma.jugadorPrincipalPrograma;
+import static Capa_Grafica.MainPrograma.partidaPrincipalPrograma;
+import Logica.OrganizacionPrograma.Partida;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Jose
@@ -33,6 +40,7 @@ public class PantallaBienvenida extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
+        button1 = new java.awt.Button();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,6 +69,13 @@ public class PantallaBienvenida extends javax.swing.JFrame {
 
         jButton4.setText("Acerca De");
 
+        button1.setLabel("button1");
+        button1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                button1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -74,6 +89,9 @@ public class PantallaBienvenida extends javax.swing.JFrame {
                     .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(142, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -88,7 +106,8 @@ public class PantallaBienvenida extends javax.swing.JFrame {
                 .addComponent(jButton3)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton4)
-                .addContainerGap(43, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 19, Short.MAX_VALUE)
+                .addComponent(button1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
@@ -119,15 +138,22 @@ public class PantallaBienvenida extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
+        try {
+            partidaPrincipalPrograma = (Partida) ManejadorDeArchivos.leerObjeto(jugadorPrincipalPrograma.getPartidasDelJugador().get(0));
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(PantallaBienvenida.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                
-                new PantallaRegistro().setVisible(true);
+                new PantallaDeJuego(partidaPrincipalPrograma).setVisible(true);
             }
         });
-        this.dispose();
     }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_button1ActionPerformed
+        
+    }//GEN-LAST:event_button1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,6 +191,7 @@ public class PantallaBienvenida extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private java.awt.Button button1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
