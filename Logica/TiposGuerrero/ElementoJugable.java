@@ -20,8 +20,8 @@ import java.util.Random;
 public abstract class ElementoJugable extends Thread implements Cloneable  {
     
     // atributos
-    private String Nombre,URLapariencia, URLaparienciaAtaque;
-    private int Nivel,  Campos,  NivelAparicion,  Costo, GolpesPorSegundo, vida;
+    public String Nombre,URLapariencia, URLaparienciaAtaque;
+    public int Nivel,  Campos,  NivelAparicion,  Costo, GolpesPorSegundo, vida;
     boolean vivo;
     Mapa refMapa;
     ElementoDibujable dibujante;
@@ -33,19 +33,10 @@ public abstract class ElementoJugable extends Thread implements Cloneable  {
     // refJuego
     boolean detener = false;
 
-      public Object clone()
-{
-    Object clone = null;
-    try
-    {
-        clone = super.clone();
-    } 
-    catch(Exception e)
-    {
-        // No deberia suceder
-    }
-    return clone;
-}
+      public abstract Object clone();
+//{
+//    return new ElementoJugable(this.Nombre,this.URLapariencia,this.Nivel,this.Campos,this.NivelAparicion,this.Costo,this.GolpesPorSegundo,this.vida,this.refMapa,this.URLaparienciaAtaque);
+//}
       
     public ElementoJugable(String Nombre, String URLapariencia, int Nivel, int Campos, int NivelAparicion, int Costo, int GolpesPorSegundo, int vida, Mapa refMapa, String URLaparienciaAtaque) {
         

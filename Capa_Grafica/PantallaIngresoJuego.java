@@ -101,6 +101,7 @@ public class PantallaIngresoJuego extends javax.swing.JFrame {
         System.out.println("---->Cantidad de personajes jugables ->"+personajesJugables.size());
         System.out.println("nombre creatura-> "+personajesJugables.get(0).getNombre());
         ejercitoInicial.add((ElementoJugable)personajesJugables.get(0).clone());
+        System.out.println("Objeto clonado nombre ->"+ejercitoInicial.get(0).getNombre());
         partidaPrincipalPrograma = new Partida(1000,1,ejercitoInicial);
          java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
