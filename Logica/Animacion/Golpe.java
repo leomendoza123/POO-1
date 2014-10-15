@@ -30,14 +30,15 @@ public class Golpe extends Thread {
     
     JLayeredPane Panel; 
     Point Salida;  Point Llegada;  Color color; 
-    public JPanel DibujoDelGolpe(Point Salida, Point Llegada, Color color){
+    public JPanel DibujoDelGolpe(final Point Salida, final Point Llegada, final Color color){
        JPanel panel;
         panel = new JPanel() {
             @Override
             public void paintComponent(Graphics g) {
                 super.paintComponent(g);
                 g.setColor(color);
-                g.drawLine(Salida.x * TamañoCuadricula,
+                g.drawLine( 
+                        Salida.x * TamañoCuadricula,
                         Salida.y * TamañoCuadricula, 
                         Llegada.x * TamañoCuadricula,
                         Llegada.y * TamañoCuadricula);

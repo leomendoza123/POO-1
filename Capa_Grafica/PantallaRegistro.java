@@ -7,8 +7,13 @@
 package Capa_Grafica;
 import Capa_Datos.ManejadorDeArchivos;
 import static Capa_Grafica.MainPrograma.memoriaDePrograma;
+import static Capa_Grafica.MainPrograma.partidaPrincipalPrograma;
+import static Capa_Grafica.MainPrograma.personajesJugables;
 import Logica.OrganizacionPrograma.Jugador;
 import Logica.OrganizacionPrograma.Credencial;
+import Logica.OrganizacionPrograma.Partida;
+import Logica.TiposGuerrero.ElementoJugable;
+import java.util.ArrayList;
 
 /**
  *
@@ -142,7 +147,19 @@ public class PantallaRegistro extends javax.swing.JFrame {
                 jugador = new Jugador(new Credencial(nombreUsuario,passwordUsuario));
                 memoriaDePrograma.RegistrarJugador(jugador);
                 ManejadorDeArchivos.grabarObjeto(ManejadorDeArchivos.pathArchivoMemoriaPrograma,memoriaDePrograma);
-                this.dispose();
+        ArrayList<ElementoJugable> ejercitoInicial = new ArrayList<ElementoJugable>();
+        System.out.println("---->Cantidad de personajes jugables ->"+personajesJugables.size());
+        System.out.println("nombre creatura-> "+personajesJugables.get(0).getNombre());
+        ejercitoInicial.add((ElementoJugable)personajesJugables.get(0).clone());
+        System.out.println("Objeto clonado nombre ->"+ejercitoInicial.get(0).getNombre());
+        partidaPrincipalPrograma = new Partida(1000,1,ejercitoInicial);
+         java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PantallaPrePartida().setVisible(true);
+            }
+        });
+         
+         this.dispose();
             }
          }
          
@@ -182,7 +199,19 @@ public class PantallaRegistro extends javax.swing.JFrame {
                     jugador = new Jugador(new Credencial(nombreUsuario,passwordUsuario));
                     memoriaDePrograma.RegistrarJugador(jugador);
                     ManejadorDeArchivos.grabarObjeto(ManejadorDeArchivos.pathArchivoMemoriaPrograma,memoriaDePrograma);
-                    this.dispose();
+                    ArrayList<ElementoJugable> ejercitoInicial = new ArrayList<ElementoJugable>();
+        System.out.println("---->Cantidad de personajes jugables ->"+personajesJugables.size());
+        System.out.println("nombre creatura-> "+personajesJugables.get(0).getNombre());
+        ejercitoInicial.add((ElementoJugable)personajesJugables.get(0).clone());
+        System.out.println("Objeto clonado nombre ->"+ejercitoInicial.get(0).getNombre());
+        partidaPrincipalPrograma = new Partida(1000,1,ejercitoInicial);
+         java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PantallaPrePartida().setVisible(true);
+            }
+        });
+         
+         this.dispose();
                 }
             
             }

@@ -17,6 +17,10 @@ import Logica.OrganizacionPrograma.Credencial;
 import Logica.OrganizacionPrograma.MemoriaDePrograma;
 import Logica.OrganizacionPrograma.Partida;
 import Logica.TiposGuerrero.AtaqueAereo;
+import Logica.TiposGuerrero.AtaqueBestia;
+import Logica.TiposGuerrero.AtaqueContacto;
+import Logica.TiposGuerrero.AtaqueHeroe;
+import Logica.TiposGuerrero.AtaqueMedianoAlcance;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
@@ -102,6 +106,9 @@ public class ManejadorDeArchivos {
             int vida;
             Mapa refMapa;
             String URLaparienciaAtaque;
+            int velocidad;
+            String URLruido;
+
               
                for (int x=0;x<ficheros.length;x++){
                    System.out.println(pathCarpetaCreaturasPrograma+"/"+ficheros[x]);
@@ -117,20 +124,42 @@ public class ManejadorDeArchivos {
                 //    vida = Double.parseDouble(datos[7]); 
                         tipoDeGuerrero = Integer.parseInt(datos[0]);
                   switch(tipoDeGuerrero){
-                    case 0: //Guerrero de contacto
+                    case 0: //Guerrero de contacto 1
                     {
-                    
-                        //GuerreroDeContacto guerreroDeContacto = new GuerreroDeContacto(nombre,nivelDePoder,nivelDeAparicion,costo,campoEnElEjercito,cantidadDeGolpesPorUnidadDeTiempo,vida);
-                        //personajesJugables.add(guerreroDeContacto);
+                        //AtaqueContacto(int velocidad, String URLruido, String Nombre, String URLapariencia, int Nivel, int Campos, int NivelAparicion, int Costo, int GolpesPorSegundo, int vida, Mapa refMapa, String URLaparienciaAtaque)
+                       velocidad = Integer.parseInt(datos[1]);
+                       URLruido = datos[2];
+                       Nombre = datos[3];
+                       URLapariencia = datos[4];
+                       Nivel = Integer.parseInt(datos[5]);
+                       Campos = Integer.parseInt(datos[6]);
+                       NivelAparicion = Integer.parseInt(datos[7]);
+                       Costo = Integer.parseInt(datos[8]);
+                       GolpesPorSegundo = Integer.parseInt(datos[9]);
+                       vida = Integer.parseInt(datos[10]);
+                       refMapa = new Mapa();
+                       URLaparienciaAtaque = datos[12];
+                        personajesJugables.add(new AtaqueContacto(velocidad,URLruido,Nombre,URLapariencia,Nivel,Campos,NivelAparicion,Costo,GolpesPorSegundo,vida,refMapa,URLaparienciaAtaque));
                         break;                                                      
                     }
                     case 1: //Guerrero de mediano alcance
                     {
-                         //GuerreroDeMedianoAlcance guerreroDeMedianoAlcance = new GuerreroDeMedianoAlcance(nombre,nivelDePoder,nivelDeAparicion,costo,campoEnElEjercito,cantidadDeGolpesPorUnidadDeTiempo,vida);
-                        //personajesJugables.add(guerreroDeMedianoAlcance);
+                        velocidad = Integer.parseInt(datos[1]);
+                        Alcance = Integer.parseInt(datos[2]);
+                        Nombre = datos[3];
+                        URLapariencia = datos[4];
+                        Nivel = Integer.parseInt(datos[5]);
+                        Campos = Integer.parseInt(datos[6]);
+                        NivelAparicion = Integer.parseInt(datos[7]);
+                        Costo = Integer.parseInt(datos[8]);
+                        GolpesPorSegundo = Integer.parseInt(datos[9]);
+                        vida = Integer.parseInt(datos[10]);
+                        refMapa = new Mapa();
+                        URLaparienciaAtaque = datos[12];
+                        personajesJugables.add(new AtaqueMedianoAlcance(velocidad,Alcance,Nombre,URLapariencia,Nivel,Campos,NivelAparicion,Costo,GolpesPorSegundo,vida,refMapa,URLaparienciaAtaque));
                          break;
                     }
-                    case 2: //Guerrero Aereo
+                    case 2: //Guerrero Aereo 1
                     {
                    
                    Alcance = Integer.parseInt(datos[1]);
@@ -145,21 +174,44 @@ public class ManejadorDeArchivos {
                    refMapa = new Mapa();
                    URLaparienciaAtaque = datos[11];
                        personajesJugables.add(new AtaqueAereo(Alcance,Nombre,URLapariencia,Nivel,Campos,NivelAparicion,Costo,GolpesPorSegundo,vida,refMapa,URLaparienciaAtaque));
-                         //GuerreroAereo guerreroAereo = new GuerreroAereo(nombre,nivelDePoder,nivelDeAparicion,costo,campoEnElEjercito,cantidadDeGolpesPorUnidadDeTiempo,vida);
-                         //personajesJugables.add(guerreroAereo);
                          break;
                     }
                     case 3: //GranBestia
                     {
-                    
-                         //GranBestia granBestia = new GranBestia(nombre,nivelDePoder,nivelDeAparicion,costo,campoEnElEjercito,cantidadDeGolpesPorUnidadDeTiempo,vida);
-                        //personajesJugables.add(granBestia);
+                        velocidad = Integer.parseInt(datos[1]);
+                        Alcance = Integer.parseInt(datos[2]);
+                        Nombre = datos[3];
+                        URLapariencia = datos[4];
+                        Nivel = Integer.parseInt(datos[5]);
+                        Campos = Integer.parseInt(datos[6]);
+                        NivelAparicion = Integer.parseInt(datos[7]);
+                        Costo = Integer.parseInt(datos[8]);
+                        GolpesPorSegundo = Integer.parseInt(datos[9]);
+                        vida = Integer.parseInt(datos[10]);
+                        refMapa = new Mapa();
+                        URLaparienciaAtaque = datos[12];
+                        //AtaqueBestia(int velocidad, int Alcance, String Nombre, String URLapariencia, int Nivel, int Campos, int NivelAparicion, int Costo, int GolpesPorSegundo, int vida, Mapa refMapa, String URLaparienciaAtaque)
+                        personajesJugables.add(new AtaqueBestia(velocidad,Alcance,Nombre,URLapariencia,Nivel,Campos,NivelAparicion,Costo,GolpesPorSegundo,vida,refMapa,URLaparienciaAtaque));
+                      
                          break;
                     }
                     case 4: //Heroe
                     {
-                         //Heroe heroe = new Heroe(nombre,nivelDePoder,nivelDeAparicion,costo,campoEnElEjercito,cantidadDeGolpesPorUnidadDeTiempo,vida);
-                         //personajesJugables.add(heroe);
+                        velocidad = Integer.parseInt(datos[1]);
+                        URLruido = datos[2];
+                        Nombre = datos[3];
+                        URLapariencia = datos[4];
+                        Nivel = Integer.parseInt(datos[5]);
+                        Campos = Integer.parseInt(datos[6]);
+                        NivelAparicion = Integer.parseInt(datos[7]);
+                        Costo = Integer.parseInt(datos[8]);
+                        GolpesPorSegundo = Integer.parseInt(datos[9]);
+                        vida = Integer.parseInt(datos[10]);
+                        refMapa = new Mapa();
+                        URLaparienciaAtaque = datos[12];
+                        
+                        
+                        personajesJugables.add(new AtaqueHeroe(velocidad,URLruido,Nombre,URLapariencia,Nivel,Campos,NivelAparicion,Costo,GolpesPorSegundo,vida,refMapa,URLaparienciaAtaque));
                          break;
                     }
             }
