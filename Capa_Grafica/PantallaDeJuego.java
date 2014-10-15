@@ -14,6 +14,7 @@ import Logica.TiposGuerrero.AtaqueAereo;
 import Logica.TiposGuerrero.AtaqueContacto;
 import Logica.TiposGuerrero.ElementoJugable;
 import java.awt.Point;
+import static java.lang.Thread.sleep;
 import java.util.ArrayList;
 import java.util.Random;
 import javax.swing.JLabel;
@@ -28,7 +29,7 @@ public class PantallaDeJuego extends javax.swing.JFrame {
     /**
      * Creates new form Pantalla
      */
-    public PantallaDeJuego(Partida partidaPrincipalPrograma) {
+    public PantallaDeJuego(Partida partidaPrincipalPrograma) throws InterruptedException {
         
         if (partidaPrincipalPrograma != null)
          setTitle(
@@ -41,7 +42,9 @@ public class PantallaDeJuego extends javax.swing.JFrame {
         initComponents();
          
        
-
+        
+        
+        
         // CREA UN MAPA, que resive el JPANEL
         Mapa MapaObj = new Mapa(jPanelDeMapa);
         
@@ -56,6 +59,12 @@ public class PantallaDeJuego extends javax.swing.JFrame {
         //Corre los hilos de las creaturas
         Partida.RunCreaturas();
         
+     
+        
+             
+        
+    
+    
         //Hay que agregarle una funcion como InicioDePartida.getInstance().setParametrosDePartida(level, creaturas, blbablabalbal);
         // Que sería lo que usted me manda para iniciar partida
 

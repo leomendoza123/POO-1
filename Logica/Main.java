@@ -7,6 +7,8 @@
 package Logica;
 
 import Capa_Grafica.PantallaDeJuego;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -44,7 +46,11 @@ public class Main {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PantallaDeJuego(null).setVisible(true);
+                try {
+                    new PantallaDeJuego(null).setVisible(true);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(Main.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
     }

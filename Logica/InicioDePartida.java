@@ -184,6 +184,49 @@ public class InicioDePartida {
     public void RunCreaturas() {
         mapa.RunCreaturas();
     }
+
+    public String Ganador() {
+        if (TodaDefensaMuerta()){
+            return ("A"); 
+            
+        }
+        else if (TodoAtacanteMuerto() ){
+            return ("D");
+            
+        }
+        return null; 
+    }
+
+    private boolean TodaDefensaMuerta() {
+        ArrayList<ElementoJugable> Elementos = mapa.getElementosGuerreroDefensor(); 
+        for (ElementoJugable Elemento : Elementos) 
+            if (!Elemento.isVivo())
+                return false;
+        return true;      
+    }
+
+    private boolean TodoAtacanteMuerto() {
+        ArrayList<ElementoJugable> Elementos = mapa.getElementosGuerreroAtacante(); 
+        for (ElementoJugable Elemento : Elementos) 
+            if (!Elemento.isVivo())
+                return false;
+        return true;   
+    }
+
+    public void fin() {
+        ArrayList<ElementoJugable> Elementos = mapa.getElementosGuerreroAtacante(); 
+        for (ElementoJugable Elemento : Elementos) 
+            Elemento.stop();
+                
+       ArrayList<ElementoJugable> Elementos2 = mapa.getElementosGuerreroDefensor(); 
+        for (ElementoJugable Elemento : Elementos2)
+            Elemento.stop();
+                
+        
+        
+    }
+
+
     
-    
+   
 }

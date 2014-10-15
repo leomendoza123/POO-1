@@ -138,15 +138,11 @@ public class PantallaBienvenida extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        try {
-            partidaPrincipalPrograma = (Partida) ManejadorDeArchivos.leerObjeto(jugadorPrincipalPrograma.getPartidasDelJugador().get(0));
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(PantallaBienvenida.class.getName()).log(Level.SEVERE, null, ex);
-        }
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PantallaDeJuego(partidaPrincipalPrograma).setVisible(true);
+                
+                new PantallaRegistro().setVisible(true);
             }
         });
     }//GEN-LAST:event_jButton3ActionPerformed

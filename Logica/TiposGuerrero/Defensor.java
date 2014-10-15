@@ -38,18 +38,22 @@ public class Defensor extends AtaqueMedianoAlcance{
     @Override
     public ArrayList<ElementoJugable> EnemigosObjetivo (){
         ArrayList<ElementoJugable> Objetivos = new ArrayList<>(); 
-        ArrayList<ElementoJugable> Enemigos = refMapa.getElementosGuerreroAtacante();  
+        ArrayList<ElementoJugable> Enemigos = refMapa.getElementosGuerreroAtacante(); 
+        
+        
          for (ElementoJugable Enemigo : Enemigos) {
              if (Enemigo instanceof AtaqueAereo && DefensaAerea){
                  Objetivos.add(Enemigo);     
              }
              if (!(Enemigo instanceof AtaqueAereo )&& DefensaTerreste ){
                  Objetivos.add(Enemigo); 
-             }     
+             } 
         }
          return Objetivos; 
          
     }
+    
+    
    
     
     

@@ -8,6 +8,8 @@ package Capa_Grafica;
 import static Capa_Grafica.MainPrograma.partidaPrincipalPrograma;
 import Logica.TiposGuerrero.ElementoJugable;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -111,7 +113,11 @@ public class PantallaPrePartida extends javax.swing.JFrame {
 
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PantallaDeJuego(partidaPrincipalPrograma).setVisible(true);
+                try {
+                    new PantallaDeJuego(partidaPrincipalPrograma).setVisible(true);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(PantallaPrePartida.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
         });
         
