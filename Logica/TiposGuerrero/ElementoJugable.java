@@ -20,13 +20,8 @@ import java.util.Random;
 public abstract class ElementoJugable extends Thread implements Cloneable  {
     
     // atributos
-<<<<<<< HEAD
-    private String Nombre,URLapariencia, URLaparienciaAtaque;
+    String Nombre,URLapariencia, URLaparienciaAtaque;
     int Nivel,  Campos,  NivelAparicion,  Costo, GolpesPorSegundo, vida;
-=======
-    public String Nombre,URLapariencia, URLaparienciaAtaque;
-    public int Nivel,  Campos,  NivelAparicion,  Costo, GolpesPorSegundo, vida;
->>>>>>> origin/master
     boolean vivo;
     Mapa refMapa;
     ElementoDibujable dibujante;

@@ -56,6 +56,7 @@ public class InicioDePartida {
                mapa.AgregaElementoAtacante(creatura);
                x = rdm.nextInt(15);
                y = rdm.nextInt(15);
+               creatura.setRefMapa(mapa);
                creatura.posicion = new Point(x, y); 
                creatura.getDibujante().posiciona(creatura.getPosicion());
                creatura.getDibujante().pintar(creatura.getURLapariencia());   
