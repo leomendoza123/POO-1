@@ -19,6 +19,7 @@ public interface ElementoDibujable {
     
     public static final int TamañoCuadricula = 32;
     public void pintar(String URL);
+    public void repintar(String URL);
     public void animar();
     public void posiciona(Point posicion);
     public void disminuirPosicionZ(); 

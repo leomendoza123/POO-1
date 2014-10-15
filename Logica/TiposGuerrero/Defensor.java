@@ -26,8 +26,6 @@ public class Defensor extends AtaqueMedianoAlcance{
         this.DefensaTerreste = DefensaTerreste;
         this.URLaparienciaMuerto = "/Imagenes/destruido.png"; 
         colorDeGolpe = Color.BLACK; 
-        
-        
     }
 
     @Override
@@ -37,9 +35,6 @@ public class Defensor extends AtaqueMedianoAlcance{
         YaPosicionado = true;
        }
     }
-       
-    
-       
     @Override
     public ArrayList<ElementoJugable> EnemigosObjetivo (){
          return refMapa.getElementosGuerreroAtacante();  

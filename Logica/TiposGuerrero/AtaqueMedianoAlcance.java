@@ -24,9 +24,11 @@ public class AtaqueMedianoAlcance extends ElementoJugable implements Cloneable{
    
 
     @Override
-    public void pegar() {
- 
-        
+  public ElementoJugable EnemigoAtacable(){
+        ElementoJugable Objetivo = EnemigoMasCercanoVivo();
+        if (Objetivo != null && Objetivo.posicion.distance(posicion)<= Alcance+0.5 )
+            return Objetivo ;
+        return   null; 
     }
     
     public Object clone()

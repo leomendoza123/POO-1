@@ -20,10 +20,6 @@ public class AtaqueAereo extends ElementoJugable implements Cloneable{
         this.Alcance = Alcance;
     }
     
-    @Override
-    public void pegar() {
-        
-    }
    
 
     

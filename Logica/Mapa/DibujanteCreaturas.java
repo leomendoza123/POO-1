@@ -51,7 +51,13 @@ public class DibujanteCreaturas implements ElementoDibujable {
         ImageIcon iconLogo = new ImageIcon(this.getClass().getResource(URL));
         refLabel.setIcon(iconLogo);
         refLabel.update(refLabel.getGraphics());
- 
+    }
+    
+    @Override
+    public void repintar(String URL) {
+        ImageIcon iconLogo = new ImageIcon(this.getClass().getResource(URL));
+        refLabel.setIcon(iconLogo);
+        refLabel.update(refLabel.getGraphics());
     }
 
     @Override

@@ -21,7 +21,7 @@ public abstract class ElementoJugable extends Thread implements Cloneable  {
     
     // atributos
     private String Nombre,URLapariencia, URLaparienciaAtaque;
-    private int Nivel,  Campos,  NivelAparicion,  Costo, GolpesPorSegundo, vida;
+    int Nivel,  Campos,  NivelAparicion,  Costo, GolpesPorSegundo, vida;
     boolean vivo;
     Mapa refMapa;
     ElementoDibujable dibujante;
@@ -67,14 +67,20 @@ public abstract class ElementoJugable extends Thread implements Cloneable  {
                 while (!detener && vivo)
         {
             try {
-                // se mueve "velocidad" segundos
                 int miliSegundosRestantes = (int)(1000 * velocidadDeJuego); 
-                int miliSegundosPorGole = (int)(miliSegundosRestantes / GolpesPorSegundo);
-                                
-                 for (; miliSegundosRestantes>0; miliSegundosRestantes-=miliSegundosPorGole ){
-                     atacar();
-                     sleep(miliSegundosPorGole);
-                 }
+
+                if (GolpesPorSegundo!=0){
+                    int miliSegundosPorGole = (int)(miliSegundosRestantes / GolpesPorSegundo);
+                     for (; miliSegundosRestantes>0; miliSegundosRestantes-=miliSegundosPorGole ){
+                         atacar();
+                         sleep(miliSegundosPorGole);
+                     }
+                }
+                else {
+                    sleep (miliSegundosRestantes) ;
+                }
+                 
+                 
                 mover();
                 
             } catch (InterruptedException ex) {}
@@ -82,7 +88,7 @@ public abstract class ElementoJugable extends Thread implements Cloneable  {
     }
     
     
-    public final void atacar(){
+    public void atacar(){
         ElementoJugable Objetivo = EnemigoAtacable();
         if (Objetivo!=null && vivo){
             Objetivo.vida--;
@@ -149,6 +155,7 @@ public abstract class ElementoJugable extends Thread implements Cloneable  {
         ArrayList<ElementoJugable> EnemigosObjetivoVivos = new ArrayList<>(); 
         for (ElementoJugable Enemigo : EnemigosObjetivo) {
             if (Enemigo.vivo){
+                if (!(Enemigo instanceof DefensorBomba)) //las bombas no son visibles 
                 EnemigosObjetivoVivos.add(Enemigo);
             }
         }
@@ -159,8 +166,6 @@ public abstract class ElementoJugable extends Thread implements Cloneable  {
     public ArrayList<ElementoJugable> EnemigosObjetivo (){
         return refMapa.getElementosGuerreroDefensor(); 
     }
-    
-    public abstract void pegar();
     
     public void detener()
     {
@@ -270,7 +275,7 @@ public abstract class ElementoJugable extends Thread implements Cloneable  {
     public void muerto() {
         
         this.vivo = false;
-        this.dibujante.pintar(URLaparienciaMuerto);
+        this.dibujante.repintar(URLaparienciaMuerto);
         this.dibujante.disminuirPosicionZ();
         
     }

@@ -27,7 +27,6 @@ public class DibujanteCampo implements ElementoDibujable{
     {
         refContenedor = panel;
         refLabel = new JLabel();
-        refContenedor.add(refLabel,1);
         // agregar evento al dar clic
         refLabel.addMouseListener(new java.awt.event.MouseAdapter() {
             
@@ -39,6 +38,15 @@ public class DibujanteCampo implements ElementoDibujable{
     
     @Override
     public void pintar(String URL) {
+        
+        refContenedor.add(refLabel,1);
+        ImageIcon iconLogo = new ImageIcon(this.getClass().getResource(URL));
+        refLabel.setIcon(iconLogo);
+        refLabel.update(refLabel.getGraphics());
+        
+    }
+    @Override
+    public void repintar(String URL) {
         ImageIcon iconLogo = new ImageIcon(this.getClass().getResource(URL));
         refLabel.setIcon(iconLogo);
         refLabel.update(refLabel.getGraphics());

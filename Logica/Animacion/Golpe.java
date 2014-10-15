@@ -61,9 +61,10 @@ public class Golpe extends Thread {
                   clip.start();
               } catch (LineUnavailableException | UnsupportedAudioFileException | IOException e) {
                   System.err.println(e.getMessage());
-              } }
+              }
+          }
       })
-            .start();
+            .start(); 
 }
     
     
