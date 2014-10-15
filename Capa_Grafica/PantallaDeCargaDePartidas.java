@@ -5,7 +5,12 @@
  */
 
 package Capa_Grafica;
+import Capa_Datos.ManejadorDeArchivos;
 import static Capa_Grafica.MainPrograma.jugadorPrincipalPrograma;
+import static Capa_Grafica.MainPrograma.partidaPrincipalPrograma;
+import Logica.OrganizacionPrograma.Partida;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -57,6 +62,11 @@ public class PantallaDeCargaDePartidas extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTextArea1);
 
         jButton2.setText("Cargar Partida Por Su index");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -110,6 +120,50 @@ public class PantallaDeCargaDePartidas extends javax.swing.JFrame {
         
         this.dispose();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+     public static boolean esNumero(String string){
+    
+        try{
+            Integer.parseInt(string);
+        }catch (Exception e){
+        return false;
+        }
+    
+        return true;
+    }
+     
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        String inputUsuario = jTextField1.getText();
+        int cantidadPartidasGuardadas = jugadorPrincipalPrograma.getPartidasDelJugador().size();
+        if(!(esNumero(inputUsuario))){
+        jTextField1.setText("por favor introducir un entero");
+        }
+        if(esNumero(inputUsuario)){
+           int indexCarga = Integer.parseInt(inputUsuario);
+           if(indexCarga<0){
+           jTextField1.setText("por favor introducir i>0");
+           }
+           if((indexCarga>cantidadPartidasGuardadas)||(indexCarga == cantidadPartidasGuardadas)){
+           jTextField1.setText("porfavor introducir index valido");
+           }
+           if((indexCarga<cantidadPartidasGuardadas)&&(indexCarga==0)){
+               try {
+                 partidaPrincipalPrograma = (Partida) ManejadorDeArchivos.leerObjeto(jugadorPrincipalPrograma.getPartidasDelJugador().get(indexCarga));
+                   java.awt.EventQueue.invokeLater(new Runnable() {
+                       public void run() {
+                         new PantallaPrePartida().setVisible(true);
+                           }
+                        });
+                 this.dispose();
+               } catch (ClassNotFoundException ex) {
+                   Logger.getLogger(PantallaDeCargaDePartidas.class.getName()).log(Level.SEVERE, null, ex);
+                   jTextField1.setText("Error al cargar");
+               }
+               
+           }
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
