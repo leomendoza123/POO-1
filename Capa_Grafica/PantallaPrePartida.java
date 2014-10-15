@@ -114,6 +114,12 @@ public class PantallaPrePartida extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new PantallaGuardado().setVisible(true);
+            }
+        });
+        this.dispose();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
