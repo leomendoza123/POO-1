@@ -147,7 +147,7 @@ public class PantallaDeCargaDePartidas extends javax.swing.JFrame {
            if((indexCarga>cantidadPartidasGuardadas)||(indexCarga == cantidadPartidasGuardadas)){
            jTextField1.setText("porfavor introducir index valido");
            }
-           if((indexCarga<cantidadPartidasGuardadas)&&(indexCarga==0)){
+           if(((indexCarga<cantidadPartidasGuardadas)||(indexCarga==0))&&(indexCarga>-1)){
                try {
                  partidaPrincipalPrograma = (Partida) ManejadorDeArchivos.leerObjeto(jugadorPrincipalPrograma.getPartidasDelJugador().get(indexCarga));
                    java.awt.EventQueue.invokeLater(new Runnable() {
