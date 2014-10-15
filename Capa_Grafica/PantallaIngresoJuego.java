@@ -98,7 +98,8 @@ public class PantallaIngresoJuego extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         ArrayList<ElementoJugable> ejercitoInicial = new ArrayList<ElementoJugable>();
-        System.out.print("---->Cantidad de personajes jugables ->"+personajesJugables.size());
+        System.out.println("---->Cantidad de personajes jugables ->"+personajesJugables.size());
+        System.out.println("nombre creatura-> "+personajesJugables.get(0).getNombre());
         ejercitoInicial.add((ElementoJugable)personajesJugables.get(0).clone());
         partidaPrincipalPrograma = new Partida(1000,1,ejercitoInicial);
          java.awt.EventQueue.invokeLater(new Runnable() {
